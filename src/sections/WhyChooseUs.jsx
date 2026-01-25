@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
 const features = [
@@ -25,8 +25,6 @@ const features = [
 ];
 
 const WhyChooseUs = () => {
-  const [showModal, setShowModal] = useState(false);
-
   return (
     <section
       className="py-5"
@@ -62,7 +60,7 @@ const WhyChooseUs = () => {
                   transition={{ delay: index * 0.2, duration: 0.5 }}
                 >
                   <div
-                    className="p-4 rounded bg-white shadow-sm h-100 feature-box"
+                    className="p-4 rounded bg-white shadow-sm h-100"
                     style={{
                       transition: "transform 0.3s",
                       borderLeft: "4px solid #007bff",
@@ -82,14 +80,16 @@ const WhyChooseUs = () => {
                       </div>
                       <h6 className="fw-bold mb-0">{feature.title}</h6>
                     </div>
-                    <p className="text-muted small mb-0">{feature.description}</p>
+                    <p className="text-muted small mb-0">
+                      {feature.description}
+                    </p>
                   </div>
                 </motion.div>
               ))}
             </div>
           </div>
 
-          {/* ✅ Right Side: Video */}
+          {/* Right Side: Video */}
           <motion.div
             className="col-lg-6 text-center"
             initial={{ opacity: 0, x: 50 }}
@@ -116,3 +116,4 @@ const WhyChooseUs = () => {
 };
 
 export default WhyChooseUs;
+

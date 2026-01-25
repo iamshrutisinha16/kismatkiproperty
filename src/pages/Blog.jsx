@@ -196,7 +196,7 @@ const Blog = () => {
         }
       `}</style>
 
-      {/* ✅ Banner Section */}
+      {/*  Banner Section */}
       <div className="video-banner">
         <video autoPlay muted loop playsInline>
           <source src="/assets/blogbanner.mp4" type="video/mp4" />
@@ -240,7 +240,7 @@ const Blog = () => {
                   <p className="text-muted small"><strong>Author:</strong> {blog.author}</p>
                   <div className="d-flex justify-content-between mt-2">
                     <button className="btn btn-sm btn-warning text-white">Share</button>
-                    <a href="#" className="btn btn-sm btn-primary">Read More</a>
+                    <a href="/blog-details" className="btn btn-sm btn-primary">Read More</a>
                   </div>
                 </div>
               </div>
