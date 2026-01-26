@@ -1,8 +1,11 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 function Navbar() {
+  const navigate = useNavigate();
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const menuItems = ["Home", "About", "Contact", "Blog", "Blueprint", "Package"];
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 992);
@@ -17,156 +20,129 @@ function Navbar() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const toggleMenu = () => setMenuOpen(prev => !prev);
   const closeMenu = () => setMenuOpen(false);
 
-  const menuVariants = {
-    hidden: { opacity: 0, y: -10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { staggerChildren: 0.05, when: "beforeChildren" },
-    },
-    exit: { opacity: 0, y: -10 },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: -5 },
-    visible: { opacity: 1, y: 0 },
+  const handleAddProperty = (e) => {
+    e.preventDefault();
+    if (isLoggedIn) {
+      navigate("/addproperty");
+    } else {
+      navigate("/signup");
+    }
   };
 
   return (
     <>
-      {isLargeScreen && (
-        <motion.div
-          className="position-fixed"
-          style={{ top: "20px", right: "20px", zIndex: 1051 }}
-          whileHover={{ scale: 1.03 }}
-        >
-          <div
-            className="d-flex flex-column text-white fw-bold text-end p-2 px-3 shadow"
-            style={{
-              backgroundColor: "#dc3545",
-              borderRadius: "8px",
-              fontSize: "13px",
-              lineHeight: "1.2",
-              minWidth: "135px",
-            }}
-          >
-            <span>Customer Care</span>
-            <a
-              href="tel:+918595076589"
-              className="text-white text-decoration-none fw-semibold"
-            >
-              📞 +91 85950 76589
-            </a>
-          </div>
-        </motion.div>
-      )}
-
       <motion.nav
-        className="navbar navbar-expand-lg fixed-top bg-white shadow-sm"
-        style={{ zIndex: 1050 }}
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        className="navbar navbar-expand-lg fixed-top bg-white border-bottom"
+        style={{ 
+          height: isLargeScreen ? "80px" : "auto", 
+          boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
+          zIndex: 1050,
+          padding: "0"
+        }}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
       >
-        <div className="container py-2 d-flex align-items-center justify-content-between">
-          <NavLink className="navbar-brand" to="/" onClick={closeMenu}>
+        <div className="container d-flex align-items-center justify-content-between">
+          
+          {/* LOGO */}
+          <NavLink className="navbar-brand py-0" to="/" onClick={closeMenu}>
             <motion.img
               src="/assets/kkplogo.png"
               alt="Logo"
               style={{
-                height: isLargeScreen ? "55px" : "48px",
+                height: isLargeScreen ? "90px" : "65px",
                 width: "auto",
-                objectFit: "contain",
+                marginTop: isLargeScreen ? "10px" : "0",
+                filter: "drop-shadow(0px 3px 5px rgba(0,0,0,0.1))",
+                zIndex: 1100
               }}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3, duration: 0.4 }}
+              whileHover={{ scale: 1.05 }}
             />
           </NavLink>
 
-          <button
-            className="navbar-toggler"
-            type="button"
+          {/* MOBILE TOGGLE */}
+          <button 
+            className="navbar-toggler border-0 shadow-none" 
+            type="button" 
             onClick={toggleMenu}
-            style={{ background: "transparent", border: "none" }}
           >
             <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div
-            className={`collapse navbar-collapse justify-content-center ${
-              menuOpen ? "show" : ""
-            }`}
-            style={{
-              backgroundColor: isLargeScreen ? "transparent" : "white",
-              padding: isLargeScreen ? 0 : "10px 0",
-              position: isLargeScreen ? "static" : "absolute",
-              top: isLargeScreen ? "auto" : "100%",
-              left: 0,
-              width: "100%",
-              zIndex: 999,
-              borderRadius: isLargeScreen ? "0" : "10px",
-              boxShadow: isLargeScreen
-                ? "none"
-                : "0 8px 20px rgba(0,0,0,0.1)",
-            }}
-          >
-            <motion.ul
-              className="navbar-nav mx-auto gap-lg-4 text-center flex-column flex-lg-row"
-              variants={menuVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-            >
-              {menuItems.map((label) => (
-                <motion.li
-                  className="nav-item"
-                  key={label}
-                  variants={itemVariants}
-                  whileHover={{ scale: 1.08 }}
-                  whileTap={{ scale: 0.95 }}
-                >
+          {/* MENU ITEMS */}
+          <div className={`collapse navbar-collapse ${menuOpen ? "show bg-white p-4 shadow-lg rounded" : ""}`}>
+            <ul className="navbar-nav mx-auto gap-lg-2">
+              {menuItems.map(label => (
+                <li className="nav-item" key={label}>
                   <NavLink
-                    to={`/${label.toLowerCase()}`}
+                    to={label === "Home" ? "/" : `/${label.toLowerCase()}`}
                     className={({ isActive }) =>
-                      `nav-link fw-semibold text-dark ${
-                        isActive ? "active text-primary" : ""
-                      }`
+                      `nav-link fw-bold px-3 ${isActive ? "text-primary border-bottom border-primary border-2" : "text-dark opacity-75"}`
                     }
                     onClick={closeMenu}
+                    style={{ fontSize: "16px", letterSpacing: "0.2px" }}
                   >
                     {label}
                   </NavLink>
-                </motion.li>
+                </li>
               ))}
-            </motion.ul>
-          </div>
+            </ul>
 
-          <div
-            className="d-flex align-items-center gap-3"
-            style={{ marginRight: isLargeScreen ? "180px" : "0px" }}
-          >
-            <NavLink
-              to="/signup"
-              className="btn btn-outline-primary px-3 py-1 fw-semibold"
-              onClick={closeMenu}
-            >
-              Signup
-            </NavLink>
+            {/* BUTTONS - Right Corner */}
+            <div className="d-flex flex-column flex-lg-row align-items-center gap-2 ms-lg-3 mt-3 mt-lg-0">
+              
+              {!isLoggedIn && (
+                <NavLink
+                  to="/signup"
+                  className="btn btn-outline-success d-flex align-items-center gap-2 px-3 rounded-pill shadow-sm"
+                  style={{ fontSize: "14px" }}
+                  onClick={closeMenu}
+                >
+                  Sign Up
+                </NavLink>
+              )}
 
-            <NavLink
-              to="/addproperty"
-              className="btn btn-success px-3 py-1 fw-semibold"
-              onClick={closeMenu}
-            >
-              Add Property
-            </NavLink>
+              <motion.button
+                onClick={handleAddProperty}
+                className="btn btn-primary d-flex align-items-center gap-2 px-3 rounded-pill shadow-sm border-0"
+                style={{ 
+                  background: "linear-gradient(45deg, #0d6efd, #0052cc)",
+                  fontSize: "13px",
+                  height: "40px",
+                  fontWeight: "700"
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span>+</span> Add Property
+              </motion.button>
+
+              <NavLink
+                to="/contact"
+                className="btn btn-danger rounded-pill px-3 fw-bold shadow-sm"
+                style={{ 
+                  fontSize: "13px", 
+                  height: "40px", 
+                  display: "flex", 
+                  alignItems: "center",
+                  backgroundColor: "#dc3545",
+                  border: "none"
+                }}
+                onClick={closeMenu}
+              >
+                Get In Touch
+              </NavLink>
+
+            </div>
           </div>
         </div>
       </motion.nav>
+
+      {/* Spacer */}
+      <div style={{ height: "80px" }}></div>
     </>
   );
 }
