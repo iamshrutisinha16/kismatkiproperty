@@ -15,7 +15,6 @@ import Package from "./pages/Package";
 import Blog from "./pages/Blog";
 import usePageTracking from "./pages/usePageTracking";
 import Signup from "./landing_page/Signup";
-import LeadCaptureModal from "./sections/LeadCaptureModal";
 import AddProperty from "./pages/AddProperty";
 import PropertyDetails from "./sections/PropertyDetails";
 
@@ -28,13 +27,7 @@ function App() {
 
   const hideLayoutRoutes = ["/signup"];
 
-  const [showModal, setShowModal] = useState(false);
   const [logoutMessage, setLogoutMessage] = useState("");
-
-  useEffect(() => {
-    const timer = setTimeout(() => setShowModal(true), 2500);
-    return () => clearTimeout(timer);
-  }, [location.pathname]);
 
   useEffect(() => {
     if (
@@ -51,10 +44,6 @@ function App() {
       return () => clearTimeout(timer);
     }
   }, [location, navigate]);
-
-  const handleLeadSubmit = () => {
-    setShowModal(false);
-  };
 
   usePageTracking();
 
@@ -87,13 +76,6 @@ function App() {
       </Routes>
 
       {!hideLayoutRoutes.includes(location.pathname) && <Footer />}
-
-      {showModal && !hideLayoutRoutes.includes(location.pathname) && (
-        <LeadCaptureModal
-          onSubmit={handleLeadSubmit}
-          onClose={() => setShowModal(false)}
-        />
-      )}
 
       <style>{`
         @keyframes floatText {

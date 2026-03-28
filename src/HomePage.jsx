@@ -7,7 +7,6 @@ import Testimonials from "./sections/TestiMonials";
 import WhyChooseUs from './sections/WhyChooseUs';
 import SellProperty from './sections/SellProperty';
 import FaqAndBlog from './sections/FaqAndBlog';
-//import LeadCaptureModal from './sections/LeadCaptureModal';
 
 function HomePage() {
   return (
