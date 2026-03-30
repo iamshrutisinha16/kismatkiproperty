@@ -5,62 +5,34 @@ const ContactPage = () => {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   const packages = [
-    {
-      id: "1",
-      name: "Advertisement",
-      price: "₹5,000",
-      duration: "2 Months",
-      features: [
-        "1 Advertisement Slot on homepage",
-        "Up to 10 property images allowed",
-        "Visible to all users: dealer / owner / buyer",
-        "Highlighted or “Best Value” badge",
-      ],
-      details: `- Professional Photography
-- Videography
-- Social Media Advertisement
-- Targeted Posts on Facebook & Instagram
-- Website Listings with Basic Lead Report
-   - Your property is showcased on our website
-   - Receive all inquiries directly
-Additional benefits include:
-- Quick approval within 24 hours
-- Featured slot for first week of listing
-- Maximum exposure across all device screens
-- No hidden charges; all features included for the 2-month duration`,
-    },
-    {
-      id: "2",
-      name: "Project",
-      price: "₹1,80,000",
-      duration: "1 Year",
-      features: [
-        "Project Listing on Website",
-        "Unlimited Photos & Video",
-        "Full Branding & Promotion",
-        "Dedicated Support Team",
-        "Lead Management Dashboard",
-      ],
-      details:
-        "Designed for full-scale project launches. Get premium visibility, branding, media support, and lead tracking tools.",
-    },
-    {
-      id: "3",
-      name: "Platinum",
-      price: "₹4,50,000",
-      duration: "1 Year",
-      features: [
-        "Unlimited Listings",
-        "Unlimited Photos & Videos",
-        "Dedicated Account Manager",
-        "Featured & City-Level Promotion",
-        "Google Ads Campaign Included",
-        "Legal & Documentation Assistance",
-      ],
-      details:
-        "All-in-one solution for serious sellers and developers. Includes Google Ads, legal help, and full-service listing support.",
-    },
-  ];
+  {
+    id: "1",
+    name: "Builder Premium Package",
+    price: "₹1,90,000 (GST Included)",
+    duration: "1 Year",
+    features: [
+      "All Social Media Marketing Included",
+      "Listing on KismatKiProperty.com",
+      "100 Advertisement Videos",
+      "10 Different Anchors for Video Ads",
+      "Complete Branding Support",
+    ],
+    details: `- Full Social Media Management (Facebook, Instagram, etc.)
+- Website Promotion on KismatKiProperty.com
+- 100 High-Quality Advertisement Videos
+- 10 Professional Anchors for Video शूट
+- Strong Brand Building & Online Presence
+- Per Advertisement Strategy & Execution
+- Lead Generation Support
+- Priority Visibility & Promotion
+
+Additional Benefits:
+- Dedicated Support Team
+- High Reach & Engagement Campaigns
+- Professional Content Creation
+- No Hidden Charges (All Inclusive Package)`
+  },
+];
 
   const addOns = [
     "Professional Property Photoshoot",
@@ -117,70 +89,101 @@ Additional benefits include:
         </video>
       </motion.div>
 
-      {/* Packages Section */}
-      <div className="container my-5">
-        <motion.h2 className="text-center mb-4" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-          Choose Your Package
-        </motion.h2>
+     {/* Packages Section */}
+<div className="container my-5">
+  <motion.h2 
+    className="text-center mb-5 fw-bold"
+    initial={{ opacity: 0, y: -20 }} 
+    whileInView={{ opacity: 1, y: 0 }} 
+    viewport={{ once: true }}
+  >
+    🚀 Premium Builder Package
+  </motion.h2>
 
-        <div className="row g-4">
-          {packages.map((pkg, idx) => (
-            <motion.div key={pkg.id} className="col-lg-4 col-md-6 col-sm-12" whileHover={{ scale: 1.03 }} transition={{ duration: 0.3 }}>
-              <div className="card shadow-sm h-100 position-relative">
-                {pkg.price === "₹5,000" && (
-                  <span style={{
-                    position: "absolute",
-                    top: "10px",
-                    right: "10px",
-                    background: "#ffc107",
-                    color: "#000",
-                    padding: "5px 10px",
-                    borderRadius: "20px",
-                    fontWeight: "600",
-                    fontSize: "14px"
-                  }}>Best Value</span>
-                )}
-                <div className="card-header bg-primary text-white text-center">
-                  <h4 className="my-2">{pkg.name}</h4>
-                </div>
-                <div className="card-body d-flex flex-column">
-                  <h3 className="text-center text-success mb-2">{pkg.price}</h3>
-                  <p className="text-center text-muted mb-3">{pkg.duration}</p>
-                  <ul className="list-unstyled small mb-3">
-                    {pkg.features.map((f, i) => (
-                      <li key={i}>
-                        <i className="bi bi-check-circle-fill text-success me-2"></i>{f}
-                      </li>
-                    ))}
-                  </ul>
-                  <motion.button
-                    className="btn btn-outline-primary mt-auto w-100"
-                    onClick={() => toggleDetails(idx)}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {expandedIndex === idx ? "Hide Details" : "View Details"}
-                  </motion.button>
+  <div className="row justify-content-center">
+    {packages.map((pkg, idx) => (
+      <motion.div 
+        key={pkg.id} 
+        className="col-lg-5 col-md-8 col-12"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        whileHover={{ scale: 1.04 }}
+        transition={{ duration: 0.4 }}
+      >
+        <div 
+          className="card border-0 shadow-lg h-100 text-center position-relative"
+          style={{
+            borderRadius: "20px",
+            overflow: "hidden",
+            background: "linear-gradient(135deg, #0d6efd, #0dcaf0)",
+            color: "#fff"
+          }}
+        >
 
-                  {expandedIndex === idx && (
-                    <motion.div
-                      layout
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      transition={{ duration: 0.4 }}
-                      style={{ overflow: "hidden" }}
-                      className="mt-3 border-top pt-2 text-muted small"
-                    >
-                      <strong>Details:</strong>
-                      <pre style={{whiteSpace: "pre-wrap"}}>{pkg.details}</pre>
-                    </motion.div>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          {/* Badge */}
+          <span style={{
+            position: "absolute",
+            top: "15px",
+            right: "-40px",
+            background: "#ffc107",
+            color: "#000",
+            padding: "8px 50px",
+            transform: "rotate(45deg)",
+            fontWeight: "bold",
+            fontSize: "14px"
+          }}>
+            BEST OFFER
+          </span>
+
+          {/* Header */}
+          <div className="py-4">
+            <h3 className="fw-bold">{pkg.name}</h3>
+            <h1 className="fw-bold mt-3">{pkg.price}</h1>
+            <p className="opacity-75">{pkg.duration}</p>
+          </div>
+
+          {/* Body */}
+          <div 
+            className="bg-white text-dark px-4 py-4"
+            style={{ borderTopLeftRadius: "20px", borderTopRightRadius: "20px" }}
+          >
+            <ul className="list-unstyled text-start mb-4">
+              {pkg.features.map((f, i) => (
+                <li key={i} className="mb-2">
+                  <i className="bi bi-check-circle-fill text-success me-2"></i>
+                  {f}
+                </li>
+              ))}
+            </ul>
+
+            {/* CTA Button */}
+            <motion.button
+              className="btn btn-primary w-100 fw-bold py-2"
+              whileTap={{ scale: 0.95 }}
+              onClick={() => toggleDetails(idx)}
+            >
+              {expandedIndex === idx ? "Hide Details" : "View Full Details"}
+            </motion.button>
+
+            {/* Details */}
+            {expandedIndex === idx && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                transition={{ duration: 0.4 }}
+                className="mt-3 text-start small text-muted"
+              >
+                <hr />
+                <pre style={{ whiteSpace: "pre-wrap" }}>{pkg.details}</pre>
+              </motion.div>
+            )}
+          </div>
+
         </div>
-      </div>
-
+      </motion.div>
+    ))}
+  </div>
+</div>
       {/* Add-ons & Extra Services */}
       <div className="container my-5">
         <h3 className="text-center mb-4">Add-ons & Extra Services</h3>
