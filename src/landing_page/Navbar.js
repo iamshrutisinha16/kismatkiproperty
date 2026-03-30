@@ -144,9 +144,6 @@ function Navbar() {
           </div>
         </div>
       </motion.nav>
-
-      {/* Spacer */}
-      <div style={{ height: "80px" }}></div>
     </>
   );
 }

@@ -202,13 +202,6 @@ const Blog = () => {
           <source src="/assets/blogbanner.mp4" type="video/mp4" />
         </video>
         <div className="video-overlay">
-          <motion.h1 
-            initial={{ opacity: 0, y: -30 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ duration: 1 }}
-          >
-            Explore Our Real Estate Insights 🏡
-          </motion.h1>
         </div>
       </div>
 

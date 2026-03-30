@@ -107,7 +107,7 @@ const Contact = () => {
           <p>B-1/628, 2nd Floor, Janakpuri East Metro Station, New Delhi</p>
           <p>Branches – South Delhi, Gurugram, Noida</p>
           <h4>📞 <strong>Mobile</strong></h4>
-          <p><a href="tel:+918595076589" style={styles.link}>+91 8595076589, +91 9810526380</a></p>
+          <p><a href="tel:+918595076589" style={styles.link}>+91 8595076589</a></p>
           <h4>📧 <strong>Email</strong></h4>
           <p><a href="mailto:property.charukhanna@gmail.com" style={styles.link}>property.charukhanna@gmail.com</a></p>
           <h4>⏰ <strong>Working Hours</strong></h4>

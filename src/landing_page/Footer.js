@@ -83,7 +83,7 @@ function Footer() {
               B-1/628, 2nd Floor, Pillar No- 570, Near Dell Showroom, Janakpuri East Metro Station, New Delhi
             </p>
             <p className="small mb-1">Email: Property.charukhanna@gmail.com</p>
-            <p className="small mb-1">Phone: +91 8595076589, +919810526380</p>
+            <p className="small mb-1">Phone: +91 8595076589</p>
             <p className="small">Office Hours: Mon - Sat, 10AM to 7PM</p>
           </div>
 
