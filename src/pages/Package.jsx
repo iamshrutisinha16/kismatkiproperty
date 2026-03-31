@@ -196,7 +196,7 @@ Additional Benefits:
         </ul>
       </div>
 
-      {/* Why Choose Us Section */}
+      {/* Why Choose Us Section 
       <div className="container my-5">
         <h3 className="text-center mb-4">Why Choose Us?</h3>
         <div className="row g-4 justify-content-center">
@@ -216,7 +216,7 @@ Additional Benefits:
             </motion.div>
           ))}
         </div>
-      </div>
+      </div>*/}
 
       {/* Bank Payment Details */}
       <motion.div className="container my-5 bg-white p-4 rounded shadow-sm border" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.8 }} viewport={{ once: true }}>
