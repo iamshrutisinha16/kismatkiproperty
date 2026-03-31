@@ -8,7 +8,7 @@ function Navbar() {
   // Login state (currently static)
   const [isLoggedIn] = useState(false);
 
-  const menuItems = ["Home", "About", "Contact", "Blog", "Blueprint", "Package"];
+  const menuItems = ["Home", "About", "Blog", "Blueprint", "Package","Contact"];
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 992);
 
