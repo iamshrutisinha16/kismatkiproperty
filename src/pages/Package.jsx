@@ -42,13 +42,6 @@ Additional Benefits:
     "Google Ads Campaign Setup",
   ];
 
-  const whyChooseUs = [
-    "We provide maximum visibility for your property.",
-    "Professional team handling marketing and promotions.",
-    "Get leads directly and efficiently managed.",
-    "Transparent and cost-effective packages.",
-    "Dedicated support to answer all queries quickly."
-  ];
 
   const faqs = [
     {
