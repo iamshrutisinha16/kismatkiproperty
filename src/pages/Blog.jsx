@@ -1,353 +1,406 @@
-import React, { useState } from "react"; 
-import { motion } from "framer-motion";
-
-const blogData = [
-  {
-    title: "Top 5 Tips to Sell Your Property Faster",
-    image: "https://via.placeholder.com/600x400?text=Sell+Fast",
-    date: "June 20, 2025",
-    category: "Tips & Guides",
-    excerpt: "Want to sell your home quickly? Learn practical strategies to attract the right buyers and close faster.",
-    author: "Admin",
-  },
-  {
-    title: "Real Estate Trends in 2025: What's Hot?",
-    image: "https://via.placeholder.com/600x400?text=Market+Trends",
-    date: "June 10, 2025",
-    category: "Market Trends",
-    excerpt: "Discover the latest in real estate for 2025 – from property price shifts to upcoming hotspots.",
-    author: "Karan Mehta",
-  },
-  {
-    title: "Step-by-Step Guide to Buying Your First Home",
-    image: "https://via.placeholder.com/600x400?text=First+Home+Guide",
-    date: "May 28, 2025",
-    category: "How-to",
-    excerpt: "Buying your first home? Here's a detailed breakdown of every step involved in the journey.",
-    author: "Sonu Kumar",
-  },
-  {
-    title: "Review: DLF’s New Sky Tower Project",
-    image: "https://via.placeholder.com/600x400?text=Project+Review",
-    date: "May 15, 2025",
-    category: "Project Review",
-    excerpt: "We visited DLF’s new Sky Tower project – here’s what we found out about location, pricing, and amenities.",
-    author: "Riya Sharma",
-  },
-  {
-    title: "Avoid These Common Property Buying Mistakes",
-    image: "https://via.placeholder.com/600x400?text=Property+Mistakes",
-    date: "April 20, 2025",
-    category: "Tips & Guides",
-    excerpt: "From poor inspections to legal slip-ups, here are mistakes you must avoid.",
-    author: "Shalini Gupta",
-  },
-  {
-    title: "How to Invest in Commercial Real Estate",
-    image: "https://via.placeholder.com/600x400?text=Invest+Commercial",
-    date: "April 05, 2025",
-    category: "Investment",
-    excerpt: "Explore why commercial property can be a smart investment and how to start.",
-    author: "Ankit Sinha",
-  },
-  {
-    title: "Understanding RERA Compliance in India",
-    image: "https://via.placeholder.com/600x400?text=RERA+Guide",
-    date: "March 18, 2025",
-    category: "Regulations",
-    excerpt: "Everything you need to know about RERA for safe and compliant investments.",
-    author: "Rohit Verma",
-  },
-  {
-    title: "Smart Home Tech: Transform Your Space in 2025",
-    image: "https://via.placeholder.com/600x400?text=Smart+Home",
-    date: "March 02, 2025",
-    category: "Technology",
-    excerpt: "Explore the latest smart gadgets and automation ideas that add value to your home.",
-    author: "Pooja Rana",
-  },
-];
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { 
+  Instagram, 
+  Facebook, 
+  Youtube, 
+  X, 
+  MapPin, 
+  PhoneCall,
+  MessageCircle,
+  Play
+} from 'lucide-react';
 
 const featuredVideos = [
-  { title: "Top Real Estate Tips", path: "/assets/featurevideo1.mp4" },
-  { title: "Property Tour 2025", path: "/assets/featurevideo4.mp4" },
-  { title: "Investment Advice", path: "/assets/featurevideo3.mp4" },
-  { title: "Smart Home Demo", path: "/assets/featurevideo2.mp4" },
-  { title: "DLF Smart City Tour", path: "/assets/featurevideo5.mp4" },
-  { title: "Luxury Apartment Review", path: "/assets/featurevideo6.mp4" },
-  { title: "Commercial,Advertisment Review", path: "/assets/featurevideo7.mp4" },
-  { title: "Advertisment Review", path: "/assets/featurevideo8.mp4" },
-  { title: "Buy, Sell review", path: "/assets/featurevideo9.mp4" },
-  { title: "Investment Advice", path: "/assets/featurevideo10.mp4" },
-  { title: "Investment Advice", path: "/assets/featurevideo11.mp4" },
+  { 
+    id: 1, 
+    title: "Premium 3BHK Apartment in Noida", 
+    path: "/assets/featurevideo11.mp4", 
+    desc: "Luxury 3BHK with modern amenities, modular kitchen, and spacious balcony near Metro station.",
+    location: "Sector 75, Noida",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+  { 
+    id: 2, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo12.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+  { 
+    id: 3, 
+    title: "Modern Smart Home Tour", 
+    path: "/assets/featurevideo13.mp4", 
+    desc: "Fully automated smart home with Alexa integration and smart lighting solutions.",
+    location: "South Delhi",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 4, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo14.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 5, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo15.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 6, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo16.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 7, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo10.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 8, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo9.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 9, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo8.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 10, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo7.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 11, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo6.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 12, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo5.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 13, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo4.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 14, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo3.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 15, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo2.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+   { 
+    id: 16, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo1.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
 ];
 
-const Blog = () => {
-  const [contactForm, setContactForm] = useState({ name: "", email: "", phone: "" });
-
-  const handleContactFormChange = (e) => {
-    setContactForm({ ...contactForm, [e.target.name]: e.target.value });
-  };
-
-  const handleContactFormSubmit = (e) => {
-    e.preventDefault();
-    console.log("Submitted:", contactForm);
-  };
-
-  const inputProps = (name, placeholder, value, onChange, type = "text") => ({
-    name,
-    type,
-    placeholder,
-    value,
-    onChange,
-    required: true,
-    style: {
-      padding: "12px",
-      marginBottom: "15px",
-      width: "100%",
-      fontSize: "16px",
-      borderRadius: "8px",
-      background: "rgba(255,255,255,0.8)",
-      border: "none",
-    },
-  });
+const VideoGalleryPage = () => {
+  const [selectedVideo, setSelectedVideo] = useState(null);
 
   return (
-    <>
+    <div className="bg-light min-vh-100">
       <style>{`
-        /* Responsive Banner */
+        /* 1. RESPONSIVE BANNER */
         .video-banner {
           position: relative;
           width: 100%;
-          height: 70vh;
-          min-height: 300px;
-          max-height: 500px;
+          height: 70vh; /* Shorter for better mobile view */
           overflow: hidden;
         }
+        @media (max-width: 768px) {
+          .video-banner { height: 35vh; }
+        }
         .video-banner video {
-          position: absolute;
-          top: 0;
-          left: 0;
           width: 100%;
           height: 100%;
           object-fit: cover;
-          z-index: 0;
         }
-        .video-overlay {
+        .banner-overlay {
           position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
+          inset: 0;
           background: rgba(0,0,0,0.5);
-          z-index: 1;
           display: flex;
           align-items: center;
           justify-content: center;
+          color: white;
           text-align: center;
-          padding: 0 15px;
-        }
-        .video-overlay h1 {
-          color: #fff;
-          font-size: 3rem;
-          font-weight: bold;
-        }
-        @media (max-width: 768px) {
-          .video-banner {
-            height: 40vh;
-            min-height: 200px;
-          }
-          .video-overlay h1 {
-            font-size: 1.6rem;
-          }
+          padding: 20px;
         }
 
-        .blog-card {
+        /* 2. RESPONSIVE VIDEO CARDS */
+        .video-card {
+          border-radius: 15px;
+          overflow: hidden;
+          background: #fff;
           border: none;
-          border-radius: 12px;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          height: 100%;
+          box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        .blog-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        .card-video-wrapper {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 9/12; /* Reel style ratio */
+          background: #000;
         }
-        .blog-image {
-          height: 220px;
+        @media (max-width: 576px) {
+          .card-video-wrapper { aspect-ratio: 16/9; } /* Landscape on small mobile */
+        }
+        .card-video-wrapper video {
+          width: 100%;
+          height: 100%;
           object-fit: cover;
-          border-top-left-radius: 12px;
-          border-top-right-radius: 12px;
         }
-        @media (max-width: 768px) {
-          .blog-image {
-            height: 180px;
-          }
+
+        /* 3. SOCIAL BUTTONS */
+        .social-btn {
+          width: 35px;
+          height: 35px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          color: white;
+          text-decoration: none;
         }
-        .scroll-btn {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
+        .bg-insta { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .bg-fb { background: #1877F2; }
+        .bg-yt { background: #FF0000; }
+
+        /* 4. FULLY RESPONSIVE MODAL */
+        .modal-overlay {
+          position: fixed;
+          top: 0; left: 0; width: 100%; height: 100%;
+          background: rgba(0,0,0,0.9);
+          z-index: 2000;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 10px;
+        }
+        .modal-container {
           background: white;
+          width: 100%;
+          max-width: 950px;
+          max-height: 90vh;
+          border-radius: 20px;
+          overflow: hidden;
+          position: relative;
+          display: flex;
+          flex-direction: column; /* Mobile first: Stacked */
+        }
+        @media (min-width: 992px) {
+          .modal-container { flex-direction: row; } /* Desktop: Side-by-side */
+        }
+        .modal-video-side {
+          flex: 1.2;
+          background: #000;
+          display: flex;
+          align-items: center;
+        }
+        .modal-content-side {
+          flex: 1;
+          padding: 25px;
+          overflow-y: auto;
+        }
+        .close-modal {
+          position: absolute;
+          top: 15px; right: 15px;
+          z-index: 10;
+          background: rgba(255,255,255,0.8);
           border: none;
           border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          z-index: 2;
-          box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+          padding: 5px;
         }
       `}</style>
 
-      {/*  Banner Section */}
+      {/* Hero Banner */}
       <div className="video-banner">
         <video autoPlay muted loop playsInline>
           <source src="/assets/blogbanner.mp4" type="video/mp4" />
         </video>
-        <div className="video-overlay">
-        </div>
-      </div>
-
-      <div className="container py-5">
-        {/* 📰 Blog Section */}
-        <motion.h2 className="text-center mb-5 fw-bold text-primary"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}>
-          📢 Latest Blog
-        </motion.h2>
-
-        <div className="row g-4">
-          {blogData.map((blog, index) => (
-            <motion.div className="col-lg-3 col-md-6" key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}>
-              <div className="card blog-card h-100 shadow-sm">
-                <img src={blog.image} alt={blog.title} className="blog-image card-img-top" />
-                <div className="card-body d-flex flex-column">
-                  <h5 className="card-title">{blog.title}</h5>
-                  <p className="text-muted small mb-1">
-                    <strong>Date:</strong> {blog.date}<br />
-                    <strong>Category:</strong> {blog.category}
-                  </p>
-                  <p className="card-text small flex-grow-1">{blog.excerpt}</p>
-                  <p className="text-muted small"><strong>Author:</strong> {blog.author}</p>
-                  <div className="d-flex justify-content-between mt-2">
-                    <button className="btn btn-sm btn-warning text-white">Share</button>
-                    <a href="/blog-details" className="btn btn-sm btn-primary">Read More</a>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* 🎥 Featured Videos Section */}
-        <motion.h2 className="text-center my-5 text-danger fw-bold"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}>
-          🎥 Watch Now – Featured Videos
-        </motion.h2>
-
-        <div style={{ position: "relative", paddingBottom: "20px" }}>
-          <button className="scroll-btn" style={{ left: "0" }}
-            onClick={() => document.getElementById("videoScroll").scrollBy({ left: -300, behavior: 'smooth' })}>◀</button>
-
-          <button className="scroll-btn" style={{ right: "0" }}
-            onClick={() => document.getElementById("videoScroll").scrollBy({ left: 300, behavior: 'smooth' })}>▶</button>
-
-          <div
-            id="videoScroll"
-            style={{
-              display: "flex",
-              overflowX: "auto",
-              scrollBehavior: "smooth",
-              gap: "20px",
-              padding: "0 50px",
-            }}
-          >
-            {featuredVideos.map((video, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                style={{ minWidth: "280px", flex: "0 0 auto" }}
-              >
-                <div className="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
-                  <video src={video.path} controls style={{ width: "100%", height: "400px", objectFit: "cover" }} />
-                  <div className="card-body text-center">
-                    <h6 className="fw-semibold">{video.title}</h6>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* 📝 Contact Form Section */}
-        <div style={{ position: "relative", height: "450px", marginTop: "60px", overflow: "hidden" }}>
-          <video
-            src="/assets/formBanner.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}
-          />
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-            style={{
-              position: "absolute",
-              top: 0,
-              left: 0,
-              width: "100%",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              zIndex: 1,
-              background: "rgba(0, 0, 0, 0.35)",
-            }}
-          >
-            <form
-              onSubmit={handleContactFormSubmit}
-              style={{
-                background: "rgba(255, 255, 255, 0.15)",
-                padding: "30px",
-                borderRadius: "20px",
-                backdropFilter: "blur(10px)",
-                WebkitBackdropFilter: "blur(10px)",
-                width: "100%",
-                maxWidth: "500px",
-                boxShadow: "0 4px 30px rgba(0, 0, 0, 0.1)",
-                border: "1px solid rgba(255, 255, 255, 0.2)",
-                color: "#fff"
-              }}
-            >
-              <h3 style={{ marginBottom: "20px", fontSize: "24px", fontWeight: "bold", textAlign: "center", color: "#fff" }}>
-                Let's Get In Touch 🚀
-              </h3>
-
-              <motion.input {...inputProps("name", "Full Name", contactForm.name, handleContactFormChange)} />
-              <motion.input {...inputProps("email", "Email Address", contactForm.email, handleContactFormChange, "email")} />
-              <motion.input {...inputProps("phone", "Mobile Number", contactForm.phone, handleContactFormChange, "tel")} />
-              <motion.button
-                type="submit"
-                style={{ padding: "12px", width: "100%", fontSize: "16px", color: "#fff", backgroundColor: "#28a745", border: "none", borderRadius: "8px", cursor: "pointer" }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                📤 Send Enquiry
-              </motion.button>
-            </form>
+        <div className="banner-overlay">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
           </motion.div>
         </div>
       </div>
-    </>
+
+      <div className="container py-4 py-md-5">
+        
+        <div className="text-center mb-4">
+          <h2 className="fw-bold">🎥 Featured Video Tours</h2>
+          <p className="text-muted">Explore properties in high definition</p>
+        </div>
+
+        {/* Responsive Grid: 1 col on mobile, 2 on tablet, 3 on desktop */}
+        <div className="row g-3 g-md-4">
+          {featuredVideos.map((video) => (
+            <div className="col-12 col-sm-6 col-lg-4" key={video.id}>
+              <div className="video-card shadow-sm">
+                <div className="card-video-wrapper">
+                  <video 
+                    src={video.path} 
+                    muted loop playsInline 
+                    onMouseOver={e => e.target.play()} 
+                    onMouseOut={e => e.target.pause()} 
+                  />
+                  <div className="position-absolute bottom-0 start-0 m-3">
+                    <span className="badge bg-primary d-flex align-items-center gap-1">
+                      <Play size={12} fill="white" /> Preview
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="p-3">
+                  <h6 className="fw-bold text-dark mb-3 text-truncate">{video.title}</h6>
+                  
+                  <div className="d-flex align-items-center justify-content-between">
+                    <div className="d-flex gap-2">
+                      <a href={video.ig} target="_blank" className="social-btn bg-insta"><Instagram size={16} /></a>
+                      <a href={video.fb} target="_blank" className="social-btn bg-fb"><Facebook size={16} /></a>
+                      <a href={video.yt} target="_blank" className="social-btn bg-yt"><Youtube size={16} /></a>
+                    </div>
+                    <button 
+                      onClick={() => setSelectedVideo(video)}
+                      className="btn btn-sm btn-outline-primary rounded-pill px-3 fw-bold"
+                    >
+                      View Details
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* RESPONSIVE MODAL */}
+      <AnimatePresence>
+        {selectedVideo && (
+          <motion.div 
+            className="modal-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <motion.div 
+              className="modal-container shadow-2xl"
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+            >
+              <button className="close-modal" onClick={() => setSelectedVideo(null)}>
+                <X size={24} />
+              </button>
+
+              <div className="modal-video-side">
+                <video 
+                  src={selectedVideo.path} 
+                  controls autoPlay 
+                  className="w-100 h-100"
+                  style={{ maxHeight: '50vh' }} // Limit video height on mobile
+                />
+              </div>
+
+              <div className="modal-content-side">
+                <div className="mb-3">
+                  <span className="badge bg-success-subtle text-success px-3 py-2 rounded-pill mb-2">Available</span>
+                  <h3 className="fw-bold text-dark">{selectedVideo.title}</h3>
+                  <div className="d-flex align-items-center gap-1 text-muted small">
+                    <MapPin size={16} className="text-danger" /> {selectedVideo.location}
+                  </div>
+                </div>
+
+                <p className="text-secondary mb-4" style={{ fontSize: '0.95rem', lineHeight: '1.6' }}>
+                  {selectedVideo.desc}
+                </p>
+
+              <div className="row g-2">
+  {/* Call Button */}
+  <div className="col-12 col-md-4">
+    <a 
+      href="tel:+918595076589"
+      className="btn btn-primary w-100 py-2 fw-bold rounded-pill d-flex align-items-center justify-content-center gap-2"
+    >
+      <PhoneCall size={18} /> Call
+    </a>
+  </div>
+
+  {/* SMS Button */}
+  <div className="col-12 col-md-4">
+    <a 
+      href="sms:+918595076589"
+      className="btn btn-warning w-100 py-2 fw-bold rounded-pill d-flex align-items-center justify-content-center gap-2"
+    >
+      <MessageCircle size={18} /> SMS
+    </a>
+  </div>
+
+  {/* WhatsApp Button */}
+  <div className="col-12 col-md-4">
+    <a 
+      href="https://wa.me/918595076589"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="btn btn-success w-100 py-2 fw-bold rounded-pill d-flex align-items-center justify-content-center gap-2"
+    >
+      <MessageCircle size={18} /> WhatsApp
+    </a>
+  </div>
+</div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 
-export default Blog;
+export default VideoGalleryPage;

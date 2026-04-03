@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react'; // 1. useRef import kiya
 import { motion } from 'framer-motion';
 import { 
   CheckCircle2, 
@@ -18,6 +18,14 @@ import {
 
 const PackagePage = () => {
   const [activeFaq, setActiveFaq] = useState(null);
+
+  // 2. Payment section ke liye reference banaya
+  const paymentSectionRef = useRef(null);
+
+  // 3. Scroll function banaya
+  const scrollToPayment = () => {
+    paymentSectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   const packageFeatures = [
     "All Social Media Marketing Included",
@@ -104,7 +112,14 @@ const PackagePage = () => {
                       </div>
                     ))}
                   </div>
-                  <button className="btn btn-primary btn-lg w-100 mt-4 rounded-pill fw-bold shadow">Activate This Plan</button>
+                  
+                  {/* 4. Button par onClick listener lagaya */}
+                  <button 
+                    onClick={scrollToPayment} 
+                    className="btn btn-primary btn-lg w-100 mt-4 rounded-pill fw-bold shadow"
+                  >
+                    Activate This Plan
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -147,8 +162,8 @@ const PackagePage = () => {
           </div>
         </div>
 
-        {/* 5. PAYMENT SECTION */}
-        <div className="row g-4 mb-5 align-items-center">
+        {/* 5. PAYMENT SECTION (Ref yahan attach kiya hai) */}
+        <div className="row g-4 mb-5 align-items-center" ref={paymentSectionRef} style={{ scrollMarginTop: '100px' }}>
           <div className="col-lg-7">
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
@@ -182,51 +197,48 @@ const PackagePage = () => {
               </div>
             </motion.div>
           </div>
-        <div className="col-lg-5 text-center">
-  <motion.div 
-    initial={{ opacity: 0, scale: 0.9 }}
-    whileInView={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.5 }}
-    className="bg-white p-4 p-md-5 rounded-4 shadow-lg h-100 d-flex flex-column justify-content-center border border-light"
-  >
-    {/* Icon & Title */}
-    <div className="mb-3 text-primary">
-      <QrCode size={50} className="mx-auto mb-2" />
-      <h4 className="fw-bold text-dark mb-1">Scan to Pay</h4>
-      <p className="small text-muted">Use any UPI App (GPay, PhonePe, Paytm)</p>
-    </div>
+          <div className="col-lg-5 text-center">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white p-4 p-md-5 rounded-4 shadow-lg h-100 d-flex flex-column justify-content-center border border-light"
+            >
+              <div className="mb-3 text-primary">
+                <QrCode size={50} className="mx-auto mb-2" />
+                <h4 className="fw-bold text-dark mb-1">Scan to Pay</h4>
+                <p className="small text-muted">Use any UPI App (GPay, PhonePe, Paytm)</p>
+              </div>
 
-    {/* QR Image Container */}
-    <div 
-      className="p-3 bg-white rounded-4 shadow-sm border border-2 border-dashed d-inline-block mx-auto mb-3"
-      style={{ borderColor: '#dee2e6' }}
-    >
-      <img 
-        src="/assets/scanner.jpeg" // <--- Yahan apni QR image ka path daalein
-        alt="Payment QR Code" 
-        className="img-fluid rounded-3"
-        style={{ 
-          width: '220px', 
-          height: '220px', 
-          objectFit: 'contain',
-          display: 'block' 
-        }} 
-      />
-    </div>
+              <div 
+                className="p-3 bg-white rounded-4 shadow-sm border border-2 border-dashed d-inline-block mx-auto mb-3"
+                style={{ borderColor: '#dee2e6' }}
+              >
+                <img 
+                  src="/assets/scanner.jpeg" 
+                  alt="Payment QR Code" 
+                  className="img-fluid rounded-3"
+                  style={{ 
+                    width: '220px', 
+                    height: '220px', 
+                    objectFit: 'contain',
+                    display: 'block' 
+                  }} 
+                />
+              </div>
 
-    {/* Footer Info */}
-    <div className="mt-2">
-      <div className="d-flex align-items-center justify-content-center gap-2 mb-2">
-        <span className="badge bg-light text-dark border px-3 py-2 rounded-pill">
-          <ShieldCheck size={16} className="text-success me-1" /> Secure Payment
-        </span>
-      </div>
-      <p className="x-small text-muted mb-0" style={{ fontSize: '0.75rem' }}>
-        Scan the QR code to complete your transaction securely.
-      </p>
-    </div>
-  </motion.div>
-</div>
+              <div className="mt-2">
+                <div className="d-flex align-items-center justify-content-center gap-2 mb-2">
+                  <span className="badge bg-light text-dark border px-3 py-2 rounded-pill">
+                    <ShieldCheck size={16} className="text-success me-1" /> Secure Payment
+                  </span>
+                </div>
+                <p className="x-small text-muted mb-0" style={{ fontSize: '0.75rem' }}>
+                  Scan the QR code to complete your transaction securely.
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
 
         {/* 6. FAQ SECTION */}
