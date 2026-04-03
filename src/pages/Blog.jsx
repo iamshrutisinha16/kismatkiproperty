@@ -303,9 +303,17 @@ const VideoGalleryPage = () => {
                   
                   <div className="d-flex align-items-center justify-content-between">
                     <div className="d-flex gap-2">
-                      <a href={video.ig} target="_blank" className="social-btn bg-insta"><Instagram size={16} /></a>
-                      <a href={video.fb} target="_blank" className="social-btn bg-fb"><Facebook size={16} /></a>
-                      <a href={video.yt} target="_blank" className="social-btn bg-yt"><Youtube size={16} /></a>
+                    <a href={video.ig} target="_blank" rel="noreferrer" className="social-btn bg-insta">
+  <Instagram size={16} />
+</a>
+
+<a href={video.fb} target="_blank" rel="noreferrer" className="social-btn bg-fb">
+  <Facebook size={16} />
+</a>
+
+<a href={video.yt} target="_blank" rel="noreferrer" className="social-btn bg-yt">
+  <Youtube size={16} />
+</a>
                     </div>
                     <button 
                       onClick={() => setSelectedVideo(video)}
