@@ -17,6 +17,7 @@ import usePageTracking from "./pages/usePageTracking";
 import Signup from "./landing_page/Signup";
 import AddProperty from "./pages/AddProperty";
 import PropertyDetails from "./sections/PropertyDetails";
+import Classified from "./pages/Claasified";
 
 // Initialize Google Analytics 4
 ReactGA.initialize("G-6YQ41WYR5E");
@@ -69,6 +70,7 @@ function App() {
         <Route path="/package" element={<Package />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/signup" element={<Signup />} />
+         <Route path="/classified" element={<Classified />} />
         <Route path="/addproperty" element={<AddProperty />} />
 
         {/* Dynamic Property Details Route */}

@@ -3,12 +3,9 @@ import { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 
 function Navbar() {
-  const navigate = useNavigate();
-
-  // Login state (currently static)
   const [isLoggedIn] = useState(false);
 
-  const menuItems = ["Home", "About", "Blog", "Blueprint", "Package","Contact"];
+  const menuItems = ["Home", "About", "Blog", "Blueprint", "Package", "Classified","Contact"];
   const [menuOpen, setMenuOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(window.innerWidth >= 992);
 
@@ -25,15 +22,6 @@ function Navbar() {
 
   const toggleMenu = () => setMenuOpen(prev => !prev);
   const closeMenu = () => setMenuOpen(false);
-
-  const handleAddProperty = (e) => {
-    e.preventDefault();
-    if (isLoggedIn) {
-      navigate("/addproperty");
-    } else {
-      navigate("/signup");
-    }
-  };
 
   return (
     <>
@@ -110,20 +98,6 @@ function Navbar() {
                   Sign Up
                 </NavLink>
               )}
-
-              <motion.button
-                onClick={handleAddProperty}
-                className="btn btn-primary px-3 rounded-pill shadow-sm border-0"
-                style={{
-                  background: "linear-gradient(45deg, #0d6efd, #0052cc)",
-                  height: "40px",
-                  fontWeight: "700"
-                }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                + Add Property
-              </motion.button>
 
               <NavLink
                 to="/contact"
