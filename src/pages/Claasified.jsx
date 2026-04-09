@@ -1,88 +1,110 @@
 import React from 'react';
 import { Container, Row, Col, Card, Button, Form, Badge } from 'react-bootstrap';
 import { motion } from 'framer-motion';
-import { FaWhatsapp, FaSearch, FaPlus, FaPhoneAlt, FaDownload } from 'react-icons/fa';
-
-// NOTE: Apni image import karne ke liye niche wali line uncomment karein aur path sahi karein
-// import MyImageAd from './path-to-your-image.jpg';
+import { FaWhatsapp, FaRegHeart, FaSearch, FaMapMarkerAlt, FaExpandArrowsAlt, FaPlus } from 'react-icons/fa';
 
 const ClassifiedPage = () => {
-  
-  // 1. Array for your Actual Images (Poster Ads)
-  const posterAds = [
-    { 
-      id: 1, 
-      img: 'https://i.postimg.cc/mD4m3v0y/Screenshot-2024-05-22-at-12-00-00-AM.png', // Yahan apni image ka path dalein
-      title: 'Wanted Kothi in Maharani Bagh' 
-    },
-    { 
-      id: 2, 
-      img: 'https://i.postimg.cc/mD4m3v0y/Screenshot-2024-05-22-at-12-00-00-AM.png', // Example placeholder
-      title: 'Urgent Plot Required' 
-    },
-    { 
-      id: 3, 
-      img: 'https://i.postimg.cc/mD4m3v0y/Screenshot-2024-05-22-at-12-00-00-AM.png', 
-      title: 'Commercial Space Wanted' 
-    }
-  ];
-
-  // 2. Regular Listings Data
-  const regularAds = [
-    { id: 101, type: 'Premium', price: '₹1.2 Cr', title: 'Skyline Luxury Penthouse', loc: 'Worli, Mumbai', img: 'https://images.unsplash.com/photo-1600607687940-4e524cb35a5a?q=80&w=1000' },
-    { id: 102, type: 'Verified', price: '₹45 Lakh', title: 'Modern 2BHK Apartment', loc: 'Gachibowli, Hyderabad', img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1000' },
+  // Demo Data - Replace images with your own
+  const ads = [
+    { id: 1, type: 'Premium', price: '₹1.2 Cr', title: 'Skyline Luxury Penthouse', loc: 'Worli, Mumbai', area: '2400 sqft', img: 'https://images.unsplash.com/photo-1600607687940-4e524cb35a5a?q=80&w=1000' },
+    { id: 2, type: 'Verified', price: '₹45 Lakh', title: 'Modern 2BHK Apartment', loc: 'Gachibowli, Hyderabad', area: '1200 sqft', img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1000' },
+    { id: 3, type: 'Featured', price: '₹85 Lakh', title: 'Green Valley Independent Villa', loc: 'Whitefield, Bangalore', area: '1800 sqft', img: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1000' },
+    { id: 4, type: 'New', price: '₹3.5 Cr', title: 'Commercial Shop - Prime Location', loc: 'CP, Delhi', area: '500 sqft', img: 'https://images.unsplash.com/photo-1582653280643-e395af3d2733?q=80&w=1000' },
   ];
 
   return (
-    <div style={{ backgroundColor: '#f0f2f5', minHeight: '100vh', fontFamily: 'Segoe UI, Roboto, sans-serif' }}>
+    <div style={{ backgroundColor: '#f4f7f6', minHeight: '100vh', fontFamily: 'Inter, sans-serif' }}>
       
-      {/* --- HERO SECTION --- */}
-      <div style={{ background: 'linear-gradient(135deg, #0f2027, #203a43, #2c5364)', padding: '60px 0', color: 'white' }}>
-        <Container className="text-center">
-          <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="fw-bold mb-3">
-            India's Leading Property Classifieds
+      {/* 1. HERO SECTION (Advertisement Focused) */}
+      <div style={{ background: 'linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d)', padding: '80px 0', color: 'white', textAlign: 'center' }}>
+        <Container>
+          <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="fw-bold display-4">
+            Find Your Dream Space
           </motion.h1>
-          <div className="mx-auto" style={{ maxWidth: '700px' }}>
-            <div className="bg-white p-2 rounded-pill shadow d-flex align-items-center">
+          <p className="lead mb-4">India's Most Trusted Property Classifieds</p>
+          
+          {/* Main Search Bar */}
+          <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="mx-auto" style={{ maxWidth: '800px' }}>
+            <div className="bg-white p-3 rounded-pill shadow-lg d-flex align-items-center">
               <FaSearch className="text-muted ms-3" />
-              <Form.Control type="text" placeholder="Search for 'Wanted Maharani Bagh'..." className="border-0 shadow-none px-3" />
-              <Button variant="primary" className="rounded-pill px-4 py-2 fw-bold">Search</Button>
+              <Form.Control 
+                type="text" 
+                placeholder="Search City, Locality, Project..." 
+                className="border-0 shadow-none px-4"
+              />
+              <Button variant="dark" className="rounded-pill px-5 py-2 fw-bold">Search</Button>
             </div>
-          </div>
+          </motion.div>
         </Container>
       </div>
 
-      <Container className="mt-4">
-        
-        {/* --- SECTION 1: ACTUAL IMAGE ADS (Your Image Style) --- */}
-        <div className="mb-5">
-          <div className="d-flex justify-content-between align-items-center mb-4">
-            <h3 className="fw-bold text-dark m-0">Featured Newspaper Ads</h3>
-            <Badge bg="danger" className="p-2 px-3">URGENT REQUIREMENTS</Badge>
+      <Container className="mt-n5" style={{ position: 'relative', top: '-30px' }}>
+        <Row className="justify-content-center">
+          <Col md={10} className="bg-white shadow rounded-4 p-4">
+            <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
+              <div className="d-flex gap-3 overflow-auto">
+                <Button variant="outline-dark" className="rounded-pill px-4">Residential</Button>
+                <Button variant="outline-dark" className="rounded-pill px-4">Commercial</Button>
+                <Button variant="outline-dark" className="rounded-pill px-4">Plots</Button>
+                <Button variant="outline-dark" className="rounded-pill px-4">Rentals</Button>
+              </div>
+              <Button variant="primary" className="rounded-pill px-4 fw-bold shadow-sm d-flex align-items-center">
+                <FaPlus className="me-2" /> Post Free Property Ad
+              </Button>
+            </div>
+          </Col>
+        </Row>
+
+        {/* 2. CLASSIFIED ADS SECTION */}
+        <div className="mt-5">
+          <div className="d-flex justify-content-between align-items-end mb-4">
+            <div>
+              <h3 className="fw-bold mb-0">Trending Classifieds</h3>
+              <p className="text-muted">Handpicked advertisements for you</p>
+            </div>
+            <a href="/classified" className="text-decoration-none fw-bold text-primary">View All Ads &rarr;</a>
           </div>
 
           <Row>
-            {posterAds.map((post) => (
-              <Col md={4} key={post.id} className="mb-4">
-                <motion.div whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 300 }}>
-                  <Card className="border-0 shadow-lg rounded-4 overflow-hidden image-ad-card">
-                    {/* Yahan aapki upload ki hui image dikhegi */}
-                    <Card.Img 
-                        src={post.img} 
-                        style={{ width: '100%', height: 'auto', display: 'block' }} 
-                        alt={post.title}
-                    />
-                    <Card.Footer className="bg-white border-0 d-flex justify-content-around py-3">
-                       <Button variant="outline-primary" size="sm" className="rounded-pill px-3">
-                         <FaPhoneAlt className="me-1" /> Call
-                       </Button>
-                       <Button variant="success" size="sm" className="rounded-pill px-3">
-                         <FaWhatsapp className="me-1" /> WhatsApp
-                       </Button>
-                       <Button variant="light" size="sm" className="rounded-pill px-3 text-muted">
-                         <FaDownload />
-                       </Button>
-                    </Card.Footer>
+            {ads.map((ad, idx) => (
+              <Col lg={3} md={6} key={ad.id} className="mb-4">
+                <motion.div 
+                  whileHover={{ y: -10 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                >
+                  <Card className="border-0 shadow-sm rounded-4 overflow-hidden h-100 property-card">
+                    <div style={{ position: 'relative' }}>
+                      <Card.Img variant="top" src={ad.img} style={{ height: '220px', objectFit: 'cover' }} />
+                      <Badge bg="white" text="dark" className="position-absolute top-0 start-0 m-3 shadow-sm rounded-1 fw-bold text-uppercase" style={{ fontSize: '10px', letterSpacing: '1px' }}>
+                        {ad.type}
+                      </Badge>
+                      <div className="position-absolute top-0 end-0 m-3 bg-white rounded-circle p-2 shadow-sm d-flex cursor-pointer" style={{ cursor: 'pointer' }}>
+                        <FaRegHeart className="text-danger" />
+                      </div>
+                    </div>
+                    
+                    <Card.Body>
+                      <h4 className="fw-bold text-dark mb-1">{ad.price}</h4>
+                      <Card.Title className="fs-6 mb-2 text-secondary fw-normal">{ad.title}</Card.Title>
+                      
+                      <div className="d-flex align-items-center text-muted small mb-3">
+                        <FaMapMarkerAlt className="me-1 text-primary" /> {ad.loc}
+                      </div>
+
+                      <div className="d-flex justify-content-between py-2 border-top border-bottom mb-3 small">
+                        <span><FaExpandArrowsAlt className="me-1" /> {ad.area}</span>
+                        <span className="fw-bold text-success text-uppercase">Verified</span>
+                      </div>
+
+                      <div className="d-grid gap-2 d-flex">
+                        <Button variant="outline-primary" className="w-100 rounded-3">Details</Button>
+                        <Button variant="success" className="w-auto px-3 rounded-3">
+                          <FaWhatsapp size={20} />
+                        </Button>
+                      </div>
+                    </Card.Body>
                   </Card>
                 </motion.div>
               </Col>
@@ -90,48 +112,34 @@ const ClassifiedPage = () => {
           </Row>
         </div>
 
-        {/* --- SECTION 2: REGULAR LISTINGS --- */}
-        <div className="mb-5">
-          <h4 className="fw-bold mb-4 border-start border-4 border-primary ps-3">Recently Added Listings</h4>
-          <Row>
-            {regularAds.map((ad) => (
-              <Col md={6} key={ad.id} className="mb-4">
-                <Card className="flex-row border-0 shadow-sm rounded-4 overflow-hidden h-100">
-                  <div style={{ width: '40%' }}>
-                    <Card.Img src={ad.img} style={{ height: '100%', objectFit: 'cover' }} />
-                  </div>
-                  <Card.Body className="p-3">
-                    <Badge bg="info" className="mb-2">{ad.type}</Badge>
-                    <h5 className="fw-bold mb-1">{ad.price}</h5>
-                    <p className="text-muted small mb-3">{ad.title}</p>
-                    <Button variant="dark" size="sm" className="w-100 rounded-pill">View Details</Button>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        </div>
-
-        {/* --- ACTION BUTTON --- */}
-        <div className="text-center pb-5">
-          <Button variant="primary" size="lg" className="rounded-pill px-5 shadow-lg fw-bold">
-            <FaPlus className="me-2" /> Post Your Newspaper Ad Today
-          </Button>
-        </div>
+        {/* 3. PROMO BANNER (Advertisement Purpose) */}
+        <motion.div 
+          initial={{ scale: 0.95 }}
+          whileInView={{ scale: 1 }}
+          className="my-5 p-5 rounded-4 text-white d-flex align-items-center justify-content-between flex-wrap shadow-lg"
+          style={{ background: 'linear-gradient(to right, #243b55, #141e30)' }}
+        >
+          <div>
+            <h2 className="fw-bold">Are you a Builder or Owner?</h2>
+            <p className="mb-0 opacity-75">Get your property listed today and reach over 10,000+ buyers daily.</p>
+          </div>
+          <Button variant="light" className="px-5 py-3 rounded-pill fw-bold text-primary mt-3 mt-lg-0">Advertise Now</Button>
+        </motion.div>
 
       </Container>
 
-      {/* Global CSS */}
+      {/* Global CSS for Smoothness */}
       <style>{`
-        .image-ad-card {
-          transition: transform 0.2s;
-          cursor: pointer;
+        .property-card {
+          transition: all 0.3s ease-in-out;
+          border: 1px solid rgba(0,0,0,0.05) !important;
         }
-        .image-ad-card:hover {
-          box-shadow: 0 20px 40px rgba(0,0,0,0.15) !important;
+        .property-card:hover {
+          box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
         }
-        .btn-primary { background: #0061ff; border: none; }
-        .form-control:focus { box-shadow: none; }
+        .btn-primary { background-color: #0061ff; border: none; }
+        .btn-primary:hover { background-color: #0056e0; }
+        .form-control:focus { outline: none !important; box-shadow: none !important; }
       `}</style>
     </div>
   );
