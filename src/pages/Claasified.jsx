@@ -62,7 +62,7 @@ const ClassifiedPage = () => {
               <h3 className="fw-bold mb-0">Trending Classifieds</h3>
               <p className="text-muted">Handpicked advertisements for you</p>
             </div>
-            <a href="#" className="text-decoration-none fw-bold text-primary">View All Ads &rarr;</a>
+            <a href="/classified" className="text-decoration-none fw-bold text-primary">View All Ads &rarr;</a>
           </div>
 
           <Row>
