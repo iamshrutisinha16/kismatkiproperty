@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { useNavigate, NavLink } from "react-router-dom";
 
 function Navbar() {
   const [isLoggedIn] = useState(false);
