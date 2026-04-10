@@ -1,148 +1,210 @@
-import React from 'react';
-import { Container, Row, Col, Card, Button, Form, Badge } from 'react-bootstrap';
-import { motion } from 'framer-motion';
-import { FaWhatsapp, FaRegHeart, FaSearch, FaMapMarkerAlt, FaExpandArrowsAlt, FaPlus } from 'react-icons/fa';
+import React, { useState } from 'react';
+import { Container, Row, Col, Card, Button, Form, Badge, Modal, Nav } from 'react-bootstrap';
+import { motion, AnimatePresence } from 'framer-motion';
+import { 
+  Search, MapPin, Maximize2, Phone, MessageSquare, 
+  Heart, Plus, Filter, CheckCircle, ArrowUpRight 
+} from 'lucide-react';
 
-const ClassifiedPage = () => {
-  // Demo Data - Replace images with your own
+const PremiumClassifieds = () => {
+  const [activeTab, setActiveTab] = useState('all');
+  const [selectedImg, setSelectedImg] = useState(null);
+
   const ads = [
-    { id: 1, type: 'Premium', price: '₹1.2 Cr', title: 'Skyline Luxury Penthouse', loc: 'Worli, Mumbai', area: '2400 sqft', img: 'https://images.unsplash.com/photo-1600607687940-4e524cb35a5a?q=80&w=1000' },
-    { id: 2, type: 'Verified', price: '₹45 Lakh', title: 'Modern 2BHK Apartment', loc: 'Gachibowli, Hyderabad', area: '1200 sqft', img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1000' },
-    { id: 3, type: 'Featured', price: '₹85 Lakh', title: 'Green Valley Independent Villa', loc: 'Whitefield, Bangalore', area: '1800 sqft', img: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1000' },
-    { id: 4, type: 'New', price: '₹3.5 Cr', title: 'Commercial Shop - Prime Location', loc: 'CP, Delhi', area: '500 sqft', img: 'https://images.unsplash.com/photo-1582653280643-e395af3d2733?q=80&w=1000' },
+    { 
+      id: 1, 
+      isPoster: true, 
+      img: '/assets/classifiedimage.jpeg', // Replace with your image link
+      category: 'wanted',
+      title: 'High Priority: Kothi in Maharani Bagh',
+      contact: '8595076589'
+    },
+    { 
+      id: 2, 
+      category: 'sale',
+      type: 'Luxury Villa', 
+      price: '₹4.5 Cr', 
+      title: 'Ultra-Modern 4BHK Villa with Private Pool', 
+      loc: 'Jubilee Hills, Hyderabad', 
+      area: '4500 sqft', 
+      img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200' 
+    },
+    { 
+      id: 3, 
+      isPoster: true, 
+      img: 'https://i.ibb.co/v4yZgHj/wanted-ad.jpg', // Replace with your image link
+      category: 'wanted',
+      title: 'Urgent Requirement: Plot in South Delhi',
+      contact: '9810126380'
+    }
+    
   ];
 
+  const filteredAds = activeTab === 'all' ? ads : ads.filter(ad => ad.category === activeTab);
+
   return (
-    <div style={{ backgroundColor: '#f4f7f6', minHeight: '100vh', fontFamily: 'Inter, sans-serif' }}>
+    <div style={{ backgroundColor: '#f8fafc', minHeight: '100vh', fontFamily: "'Inter', sans-serif" }}>
       
-      {/* 1. HERO SECTION (Advertisement Focused) */}
-      <div style={{ background: 'linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d)', padding: '80px 0', color: 'white', textAlign: 'center' }}>
+      {/* --- PREMIUM HERO SECTION --- */}
+      <div style={{ 
+        background: 'linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        padding: '100px 0',
+        color: 'white'
+      }}>
         <Container>
-          <motion.h1 initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="fw-bold display-4">
-            Find Your Dream Space
-          </motion.h1>
-          <p className="lead mb-4">India's Most Trusted Property Classifieds</p>
-          
-          {/* Main Search Bar */}
-          <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} className="mx-auto" style={{ maxWidth: '800px' }}>
-            <div className="bg-white p-3 rounded-pill shadow-lg d-flex align-items-center">
-              <FaSearch className="text-muted ms-3" />
-              <Form.Control 
-                type="text" 
-                placeholder="Search City, Locality, Project..." 
-                className="border-0 shadow-none px-4"
-              />
-              <Button variant="dark" className="rounded-pill px-5 py-2 fw-bold">Search</Button>
+          <div className="text-center mb-5">
+            <motion.h1 
+              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+              className="fw-bold display-4 mb-3"
+            >
+              Discover <span style={{ color: '#facc15' }}>Prime</span> Properties
+            </motion.h1>
+            <p className="fs-5 opacity-75">India's most exclusive real estate classifieds network.</p>
+          </div>
+
+          {/* Floating Search Bar */}
+          <motion.div 
+            initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }}
+            className="mx-auto shadow-lg rounded-4 bg-white p-2 d-flex flex-wrap gap-2"
+            style={{ maxWidth: '850px' }}
+          >
+            <div className="flex-grow-1 d-flex align-items-center px-3 border-end">
+              <Search size={20} className="text-muted me-2" />
+              <Form.Control type="text" placeholder="Search locality or property type..." className="border-0 shadow-none" />
             </div>
+            <div className="d-flex align-items-center px-3 border-end d-none d-md-flex">
+              <MapPin size={20} className="text-muted me-2" />
+              <Form.Select className="border-0 shadow-none bg-transparent">
+                <option>All Delhi</option>
+                <option>South Delhi</option>
+                <option>Mumbai</option>
+              </Form.Select>
+            </div>
+            <Button variant="dark" className="rounded-3 px-4 py-3 fw-bold d-flex align-items-center gap-2">
+              <Filter size={18} /> Search
+            </Button>
           </motion.div>
         </Container>
       </div>
 
-      <Container className="mt-n5" style={{ position: 'relative', top: '-30px' }}>
-        <Row className="justify-content-center">
-          <Col md={10} className="bg-white shadow rounded-4 p-4">
-            <div className="d-flex justify-content-between align-items-center flex-wrap gap-3">
-              <div className="d-flex gap-3 overflow-auto">
-                <Button variant="outline-dark" className="rounded-pill px-4">Residential</Button>
-                <Button variant="outline-dark" className="rounded-pill px-4">Commercial</Button>
-                <Button variant="outline-dark" className="rounded-pill px-4">Plots</Button>
-                <Button variant="outline-dark" className="rounded-pill px-4">Rentals</Button>
-              </div>
-              <Button variant="primary" className="rounded-pill px-4 fw-bold shadow-sm d-flex align-items-center">
-                <FaPlus className="me-2" /> Post Free Property Ad
-              </Button>
-            </div>
-          </Col>
-        </Row>
-
-        {/* 2. CLASSIFIED ADS SECTION */}
-        <div className="mt-5">
-          <div className="d-flex justify-content-between align-items-end mb-4">
-            <div>
-              <h3 className="fw-bold mb-0">Trending Classifieds</h3>
-              <p className="text-muted">Handpicked advertisements for you</p>
-            </div>
-            <a href="/classified" className="text-decoration-none fw-bold text-primary">View All Ads &rarr;</a>
-          </div>
-
-          <Row>
-            {ads.map((ad, idx) => (
-              <Col lg={3} md={6} key={ad.id} className="mb-4">
-                <motion.div 
-                  whileHover={{ y: -10 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
+      <Container className="py-5">
+        {/* --- NAVIGATION & FILTERS --- */}
+        <div className="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-3">
+          <Nav variant="pills" className="bg-white p-1 rounded-pill shadow-sm border">
+            {['all', 'sale', 'wanted'].map((tab) => (
+              <Nav.Item key={tab}>
+                <Nav.Link 
+                  active={activeTab === tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`rounded-pill px-4 text-capitalize ${activeTab === tab ? 'bg-dark text-white' : 'text-secondary'}`}
+                  style={{ cursor: 'pointer' }}
                 >
-                  <Card className="border-0 shadow-sm rounded-4 overflow-hidden h-100 property-card">
-                    <div style={{ position: 'relative' }}>
-                      <Card.Img variant="top" src={ad.img} style={{ height: '220px', objectFit: 'cover' }} />
-                      <Badge bg="white" text="dark" className="position-absolute top-0 start-0 m-3 shadow-sm rounded-1 fw-bold text-uppercase" style={{ fontSize: '10px', letterSpacing: '1px' }}>
-                        {ad.type}
-                      </Badge>
-                      <div className="position-absolute top-0 end-0 m-3 bg-white rounded-circle p-2 shadow-sm d-flex cursor-pointer" style={{ cursor: 'pointer' }}>
-                        <FaRegHeart className="text-danger" />
-                      </div>
-                    </div>
-                    
-                    <Card.Body>
-                      <h4 className="fw-bold text-dark mb-1">{ad.price}</h4>
-                      <Card.Title className="fs-6 mb-2 text-secondary fw-normal">{ad.title}</Card.Title>
-                      
-                      <div className="d-flex align-items-center text-muted small mb-3">
-                        <FaMapMarkerAlt className="me-1 text-primary" /> {ad.loc}
-                      </div>
+                  {tab}
+                </Nav.Link>
+              </Nav.Item>
+            ))}
+          </Nav>
+          
+          <Button variant="outline-dark" className="rounded-pill px-4 py-2 fw-bold d-flex align-items-center gap-2">
+            <Plus size={18} /> Post Free Ad
+          </Button>
+        </div>
 
-                      <div className="d-flex justify-content-between py-2 border-top border-bottom mb-3 small">
-                        <span><FaExpandArrowsAlt className="me-1" /> {ad.area}</span>
-                        <span className="fw-bold text-success text-uppercase">Verified</span>
+        {/* --- ADS GRID --- */}
+        <Row>
+          <AnimatePresence mode='popLayout'>
+            {filteredAds.map((ad) => (
+              <Col key={ad.id} lg={4} md={6} className="mb-4">
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  whileHover={{ y: -10 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  {ad.isPoster ? (
+                    /* --- POSTER STYLE AD (For your specific images) --- */
+                    <Card className="border-0 shadow-lg rounded-4 overflow-hidden h-100" style={{ cursor: 'pointer' }}>
+                      <div className="position-relative" onClick={() => setSelectedImg(ad.img)}>
+                        <Card.Img src={ad.img} style={{ height: '420px', objectFit: 'cover' }} />
+                        <div className="position-absolute bottom-0 start-0 w-100 p-3" style={{ background: 'linear-gradient(transparent, rgba(0,0,0,0.8))' }}>
+                          <Badge bg="warning" text="dark" className="mb-2">URGENT REQUIREMENT</Badge>
+                          <h5 className="text-white fw-bold mb-0">Tap to view full details</h5>
+                        </div>
+                        <div className="position-absolute top-0 end-0 m-3 bg-white p-2 rounded-circle shadow-sm">
+                           <ArrowUpRight size={20} className="text-dark" />
+                        </div>
                       </div>
-
-                      <div className="d-grid gap-2 d-flex">
-                        <Button variant="outline-primary" className="w-100 rounded-3">Details</Button>
-                        <Button variant="success" className="w-auto px-3 rounded-3">
-                          <FaWhatsapp size={20} />
+                      <div className="p-3 bg-white border-top d-flex gap-2">
+                        <Button variant="success" className="w-100 rounded-3 py-2 d-flex align-items-center justify-content-center gap-2" onClick={() => window.open(`https://wa.me/${ad.contact}`)}>
+                          <MessageSquare size={18} /> WhatsApp
+                        </Button>
+                        <Button variant="primary" className="w-100 rounded-3 py-2 d-flex align-items-center justify-content-center gap-2" onClick={() => window.open(`tel:${ad.contact}`)}>
+                          <Phone size={18} /> Call
                         </Button>
                       </div>
-                    </Card.Body>
-                  </Card>
+                    </Card>
+                  ) : (
+                    /* --- MODERN PROPERTY CARD --- */
+                    <Card className="border-0 shadow-sm rounded-4 overflow-hidden h-100">
+                      <div className="position-relative">
+                        <Card.Img src={ad.img} style={{ height: '240px', objectFit: 'cover' }} />
+                        <div className="position-absolute top-0 start-0 m-3">
+                          <Badge bg="white" text="dark" className="shadow-sm border">
+                            <CheckCircle size={12} className="text-success me-1" /> Verified
+                          </Badge>
+                        </div>
+                        <div className="position-absolute top-0 end-0 m-3 bg-white p-2 rounded-circle shadow-sm" style={{ cursor: 'pointer' }}>
+                           <Heart size={20} className="text-danger" />
+                        </div>
+                      </div>
+                      <Card.Body className="p-4">
+                        <div className="d-flex justify-content-between align-items-center mb-2">
+                          <span className="text-primary fw-bold fs-4">{ad.price}</span>
+                          <small className="text-muted">{ad.type}</small>
+                        </div>
+                        <Card.Title className="fw-bold mb-2 text-dark">{ad.title}</Card.Title>
+                        <p className="text-muted small d-flex align-items-center gap-1 mb-3">
+                          <MapPin size={14} /> {ad.loc}
+                        </p>
+                        <div className="d-flex gap-3 py-3 border-top border-bottom mb-3">
+                          <div className="small d-flex align-items-center gap-1"><Maximize2 size={14} /> {ad.area}</div>
+                          <div className="small d-flex align-items-center gap-1">New Construction</div>
+                        </div>
+                        <Button variant="dark" className="w-100 rounded-3 py-2 fw-bold">View Details</Button>
+                      </Card.Body>
+                    </Card>
+                  )}
                 </motion.div>
               </Col>
             ))}
-          </Row>
-        </div>
-
-        {/* 3. PROMO BANNER (Advertisement Purpose) */}
-        <motion.div 
-          initial={{ scale: 0.95 }}
-          whileInView={{ scale: 1 }}
-          className="my-5 p-5 rounded-4 text-white d-flex align-items-center justify-content-between flex-wrap shadow-lg"
-          style={{ background: 'linear-gradient(to right, #243b55, #141e30)' }}
-        >
-          <div>
-            <h2 className="fw-bold">Are you a Builder or Owner?</h2>
-            <p className="mb-0 opacity-75">Get your property listed today and reach over 10,000+ buyers daily.</p>
-          </div>
-          <Button variant="light" className="px-5 py-3 rounded-pill fw-bold text-primary mt-3 mt-lg-0">Advertise Now</Button>
-        </motion.div>
-
+          </AnimatePresence>
+        </Row>
       </Container>
 
-      {/* Global CSS for Smoothness */}
+      {/* Lightbox for Posters */}
+      <Modal show={!!selectedImg} onHide={() => setSelectedImg(null)} centered size="md">
+        <Modal.Body className="p-0 border-0">
+          <img src={selectedImg} alt="Requirement" className="w-100 rounded shadow-lg" />
+          <Button variant="dark" className="position-absolute top-0 end-0 m-3 rounded-circle p-2" onClick={() => setSelectedImg(null)}>✕</Button>
+        </Modal.Body>
+      </Modal>
+
+      {/* Global CSS Enhancements */}
       <style>{`
-        .property-card {
-          transition: all 0.3s ease-in-out;
-          border: 1px solid rgba(0,0,0,0.05) !important;
-        }
-        .property-card:hover {
-          box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
-        }
-        .btn-primary { background-color: #0061ff; border: none; }
-        .btn-primary:hover { background-color: #0056e0; }
-        .form-control:focus { outline: none !important; box-shadow: none !important; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        .form-control:focus, .form-select:focus { outline: none; box-shadow: none; }
+        .nav-link.active { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        .card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .btn { transition: all 0.3s ease; }
+        .btn:hover { transform: translateY(-2px); }
       `}</style>
     </div>
   );
 };
 
-export default ClassifiedPage;
+export default PremiumClassifieds;
