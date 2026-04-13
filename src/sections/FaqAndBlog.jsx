@@ -43,6 +43,7 @@ const FaqAndInquiryForm = () => {
 
       {/* Inquiry Form Section */}
       <section
+        id="inquiry-form" 
         className="py-5 text-white"
         style={{
           backgroundImage: "url('https://www.transparenttextures.com/patterns/white-wall.png')",

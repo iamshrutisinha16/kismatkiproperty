@@ -8,10 +8,10 @@ const features = [
     number: "01",
   },
   {
-    title: "10 Lakh+ Users",
-    description: "Our community of users grows every day across India.",
-    number: "02",
-  },
+  title: "Growing Community",
+  description: "We are building a community of users across India who trust our platform.",
+  number: "02",
+},
   {
     title: "Fast Property Deals",
     description: "We connect serious buyers and sellers faster than others.",

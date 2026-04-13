@@ -1,6 +1,15 @@
 import React from "react";
 
 const SellProperty = () => {
+
+  // 🔥 Scroll to existing form
+  const handleOpenForm = () => {
+    const section = document.getElementById("inquiry-form");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="py-5 bg-white">
       <div className="container text-center">
@@ -12,16 +21,23 @@ const SellProperty = () => {
         </p>
 
         <div className="row">
+          
+          {/* 🔹 CARD 1 */}
           <div className="col-md-4 mb-4">
-            <div className="p-4 shadow-sm rounded bg-light h-100">
+            <div
+              className="p-4 shadow-sm rounded bg-light h-100"
+              style={{ cursor: "pointer" }}
+              onClick={handleOpenForm}   // 👈 yahi main change hai
+            >
               <i className="fas fa-user-plus text-primary fs-1 mb-3"></i>
               <h5 className="fw-bold">Create Account</h5>
               <p className="text-muted small">
-                Sign up easily to get started with listing your property.
+                Click to fill the form and get started.
               </p>
             </div>
           </div>
 
+          {/* 🔹 CARD 2 */}
           <div className="col-md-4 mb-4">
             <div className="p-4 shadow-sm rounded bg-light h-100">
               <i className="fas fa-home text-success fs-1 mb-3"></i>
@@ -32,15 +48,17 @@ const SellProperty = () => {
             </div>
           </div>
 
+          {/* 🔹 CARD 3 */}
           <div className="col-md-4 mb-4">
             <div className="p-4 shadow-sm rounded bg-light h-100">
               <i className="fas fa-handshake text-warning fs-1 mb-3"></i>
-              <h5 className="fw-bold">Get Buyers</h5>
+              <h5 className="fw-bold">Find Genuine Buyers</h5>
               <p className="text-muted small">
-                Reach thousands of buyers directly and close deals fast!
+                Connect with verified buyers and grow your business with confidence.
               </p>
             </div>
           </div>
+
         </div>
 
         <a
