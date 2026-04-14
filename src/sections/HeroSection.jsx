@@ -20,37 +20,43 @@ function HeroSection() {
 
       {/* 🔸 Hero Content */}
       <div className="hero-content">
-        <motion.h1
-          initial={{ opacity: 0, y: -20 }}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.8 }}
         >
-          Property Toh Kismat Se Milti Hai
-          <span className="highlight"> Search Kare</span>
-        </motion.h1>
-
-        {/* 📞 Styled Selling Section (P tag fix) */}
-        <motion.div 
-          className="sell-notice-box"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 1 }}
-        >
-          <p className="hindi-text">
-            <FaPhoneAlt className="phone-icon-anim" /> 
-            अगर आप अपनी कोई भी पुरानी प्रॉपर्टी बेचना चाहते हैं, तो बस एक मिस कॉल दें!
-          </p>
-          <div className="phone-highlight">
-            <a href="tel:8595076589">8595076589</a>
-          </div>
+          <h1 className="main-heading">
+            अगर आप अपनी कोई भी पुरानी प्रॉपर्टी बेचना चाहते हैं,
+            तो बस एक मिस कॉल दें!
+          </h1>
+          <h2 className="highlight-text">Search Kare</h2>
         </motion.div>
 
+        {/* 📞 Improved Call Box */}
+        <motion.div
+          className="call-box-container"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+        >
+          <a href="tel:8595076589" className="call-card">
+            <div className="phone-circle">
+              <FaPhoneAlt className="vibrating-phone" />
+            </div>
+            <div className="call-info">
+              <span className="label">अभी कॉल करें</span>
+              <span className="number">8595076589</span>
+            </div>
+          </a>
+        </motion.div>
+
+        {/* Explore Button */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
+          transition={{ delay: 0.8 }}
         >
-          <a href="#properties" className="hero-btn">
+          <a href="#properties" className="explore-btn">
             Explore Now
           </a>
         </motion.div>
