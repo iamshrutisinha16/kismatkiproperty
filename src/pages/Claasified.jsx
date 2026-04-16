@@ -14,23 +14,53 @@ const PremiumClassifieds = () => {
     { 
       id: 1, 
       isPoster: true, 
-      img: '/assets/classifiedimage.jpeg', // Replace with your image link
+      img: '/assets/classifiedimage.jpeg', 
       category: 'wanted',
       title: 'High Priority: Kothi in Maharani Bagh',
       contact: '8595076589'
     },
     { 
       id: 2, 
-      category: 'sale',
-      type: 'Luxury Villa', 
-      price: '₹4.5 Cr', 
-      title: 'Ultra-Modern 4BHK Villa with Private Pool', 
-      loc: 'Jubilee Hills, Hyderabad', 
-      area: '4500 sqft', 
-      img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=1200' 
+      isPoster: true, 
+      img: '/assets/classifiedimage1.jpeg', 
+      category: 'wanted',
+      title: 'High Priority: Kothi in Maharani Bagh',
+      contact: '8595076589'
     },
     { 
       id: 3, 
+      isPoster: true, 
+      img: '/assets/classifiedimage2.jpeg', 
+      category: 'wanted',
+      title: 'High Priority: Kothi in Maharani Bagh',
+      contact: '8595076589'
+    },
+    { 
+      id: 4, 
+      isPoster: true, 
+      img: '/assets/classifiedimage3.jpeg', 
+      category: 'wanted',
+      title: 'High Priority: Kothi in Maharani Bagh',
+      contact: '8595076589'
+    },
+    { 
+      id: 5, 
+      isPoster: true, 
+      img: '/assets/classifiedimage4.jpeg', 
+      category: 'wanted',
+      title: 'High Priority: Kothi in Maharani Bagh',
+      contact: '8595076589'
+    },
+    { 
+      id: 6, 
+      isPoster: true, 
+      img: '/assets/classifiedimage5.jpeg', 
+      category: 'wanted',
+      title: 'High Priority: Kothi in Maharani Bagh',
+      contact: '8595076589'
+    },
+    { 
+      id: 7, 
       isPoster: true, 
       img: 'https://i.ibb.co/v4yZgHj/wanted-ad.jpg', // Replace with your image link
       category: 'wanted',
@@ -192,17 +222,6 @@ const PremiumClassifieds = () => {
           <Button variant="dark" className="position-absolute top-0 end-0 m-3 rounded-circle p-2" onClick={() => setSelectedImg(null)}>✕</Button>
         </Modal.Body>
       </Modal>
-
-      {/* Global CSS Enhancements */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        
-        .form-control:focus, .form-select:focus { outline: none; box-shadow: none; }
-        .nav-link.active { box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-        .card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .btn { transition: all 0.3s ease; }
-        .btn:hover { transform: translateY(-2px); }
-      `}</style>
     </div>
   );
 };

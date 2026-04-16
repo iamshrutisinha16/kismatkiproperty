@@ -140,6 +140,46 @@ const featuredVideos = [
     location: "Gurugram, Phase 5",
     ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
   },
+  { 
+    id: 17, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo17.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+  { 
+    id: 18, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo18.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+  { 
+    id: 19, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo19.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+  { 
+    id: 20, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo21.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
+  { 
+    id: 22, 
+    title: "DLF Smart City Luxury Villa", 
+    path: "/assets/featurevideo22.mp4", 
+    desc: "A beautiful independent villa with private garden and 24/7 security. Perfect for families.",
+    location: "Gurugram, Phase 5",
+    ig: "https://instagram.com", fb: "https://facebook.com", yt: "https://youtube.com" 
+  },
 ];
 
 const VideoGalleryPage = () => {
@@ -147,120 +187,6 @@ const VideoGalleryPage = () => {
 
   return (
     <div className="bg-light min-vh-100">
-      <style>{`
-        /* 1. RESPONSIVE BANNER */
-        .video-banner {
-          position: relative;
-          width: 100%;
-          height: 70vh; /* Shorter for better mobile view */
-          overflow: hidden;
-        }
-        @media (max-width: 768px) {
-          .video-banner { height: 35vh; }
-        }
-        .video-banner video {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        .banner-overlay {
-          position: absolute;
-          inset: 0;
-          background: rgba(0,0,0,0.5);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          text-align: center;
-          padding: 20px;
-        }
-
-        /* 2. RESPONSIVE VIDEO CARDS */
-        .video-card {
-          border-radius: 15px;
-          overflow: hidden;
-          background: #fff;
-          border: none;
-          height: 100%;
-          box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        .card-video-wrapper {
-          position: relative;
-          width: 100%;
-          aspect-ratio: 9/12; /* Reel style ratio */
-          background: #000;
-        }
-        @media (max-width: 576px) {
-          .card-video-wrapper { aspect-ratio: 16/9; } /* Landscape on small mobile */
-        }
-        .card-video-wrapper video {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        /* 3. SOCIAL BUTTONS */
-        .social-btn {
-          width: 35px;
-          height: 35px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          color: white;
-          text-decoration: none;
-        }
-        .bg-insta { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .bg-fb { background: #1877F2; }
-        .bg-yt { background: #FF0000; }
-
-        /* 4. FULLY RESPONSIVE MODAL */
-        .modal-overlay {
-          position: fixed;
-          top: 0; left: 0; width: 100%; height: 100%;
-          background: rgba(0,0,0,0.9);
-          z-index: 2000;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 10px;
-        }
-        .modal-container {
-          background: white;
-          width: 100%;
-          max-width: 950px;
-          max-height: 90vh;
-          border-radius: 20px;
-          overflow: hidden;
-          position: relative;
-          display: flex;
-          flex-direction: column; /* Mobile first: Stacked */
-        }
-        @media (min-width: 992px) {
-          .modal-container { flex-direction: row; } /* Desktop: Side-by-side */
-        }
-        .modal-video-side {
-          flex: 1.2;
-          background: #000;
-          display: flex;
-          align-items: center;
-        }
-        .modal-content-side {
-          flex: 1;
-          padding: 25px;
-          overflow-y: auto;
-        }
-        .close-modal {
-          position: absolute;
-          top: 15px; right: 15px;
-          z-index: 10;
-          background: rgba(255,255,255,0.8);
-          border: none;
-          border-radius: 50%;
-          padding: 5px;
-        }
-      `}</style>
-
       {/* Hero Banner */}
       <div className="video-banner">
         <video autoPlay muted loop playsInline>

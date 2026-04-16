@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaPhoneAlt } from "react-icons/fa";
 
@@ -26,8 +27,8 @@ function HeroSection() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="main-heading">
-            अगर आप अपनी कोई भी पुरानी प्रॉपर्टी बेचना चाहते हैं,
-            तो बस एक मिस कॉल दें!
+           अगर आप अपनी कोई भी पुरानी प्रॉपर्टी बेचना चाहते हैं, 
+           तो बस एक मिस कॉल दें!
           </h1>
           <h2 className="highlight-text">Search Kare</h2>
         </motion.div>
@@ -56,9 +57,8 @@ function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8 }}
         >
-          <a href="#properties" className="explore-btn">
-            Explore Now
-          </a>
+         <Link to="/classified" className="explore-btn">
+          Explore Now </Link>
         </motion.div>
       </div>
     </section>
