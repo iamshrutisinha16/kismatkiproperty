@@ -14,12 +14,12 @@ import Blueprint from "./pages/Blueprint";
 import Package from "./pages/Package";
 import Blog from "./pages/Blog";
 import Signup from "./landing_page/Signup";
-import AddProperty from "./pages/AddProperty";
-import PropertyDetails from "./sections/PropertyDetails";
 import Classified from "./pages/Claasified";
 import usePageTracking from "./pages/usePageTracking";
 
-// Initialize Google Analytics 4
+// ✅ Admin Pages
+import Dashboard from "./pages/admin/dashboard";
+// Initialize Google Analytics
 ReactGA.initialize("G-6YQ41WYR5E");
 
 function App() {
@@ -27,20 +27,19 @@ function App() {
   const navigate = useNavigate();
   const [logoutMessage, setLogoutMessage] = useState("");
 
-  // पेज ट्रैकिंग हुक
   usePageTracking();
 
-  // जिन पेजों पर Navbar/Footer नहीं दिखाना है
-  const hideLayout = location.pathname === "/signup";
+  // ✅ Navbar/Footer hide for signup + admin
+  const hideLayout =
+    location.pathname === "/signup" ||
+    location.pathname.startsWith("/admin");
 
   useEffect(() => {
-    // लॉगआउट मैसेज हैंडलर
     if (location.state?.message === "Logged out successfully" && !hideLayout) {
       setLogoutMessage("Logged out successfully");
 
       const timer = setTimeout(() => {
         setLogoutMessage("");
-        // स्टेट साफ़ करना ताकि रिफ्रेश पर मैसेज न आए
         navigate(location.pathname, { replace: true, state: null });
       }, 3000);
 
@@ -50,20 +49,26 @@ function App() {
 
   return (
     <div className="app-container">
-      {/* लॉगआउट अलर्ट */}
+      
+      {/* Alert */}
       {logoutMessage && (
-        <Alert variant="success" className="text-center fixed-top m-3" style={{ zIndex: 9999 }}>
+        <Alert
+          variant="success"
+          className="text-center fixed-top m-3"
+          style={{ zIndex: 9999 }}
+        >
           {logoutMessage}
         </Alert>
       )}
 
-      {/* Header & Widgets (Conditional) */}
+      {/* Navbar & Widgets */}
       {!hideLayout && <Navbar />}
       {!hideLayout && <WhatsappWidget />}
 
-      {/* Main Routes */}
+      {/* Routes */}
       <main className="content-area">
         <Routes>
+          {/* Website Routes */}
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<About />} />
@@ -73,12 +78,13 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/classified" element={<Classified />} />
-          <Route path="/addproperty" element={<AddProperty />} />
-          <Route path="/property/:id" element={<PropertyDetails />} />
+
+          {/* ✅ Admin Route */}
+          <Route path="/admin" element={<Dashboard />} />
         </Routes>
       </main>
 
-      {/* Footer (Conditional) */}
+      {/* Footer */}
       {!hideLayout && <Footer />}
     </div>
   );

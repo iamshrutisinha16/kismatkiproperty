@@ -26,10 +26,10 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="main-heading">
-           अगर आप अपनी कोई भी पुरानी प्रॉपर्टी बेचना चाहते हैं, 
-           तो बस एक मिस कॉल दें!
-          </h1>
+         <h1 className="main-heading">
+  Agar aap apni purani property bechna chahte hain, 
+  toh bas ek missed call dein!
+</h1>
           <h2 className="highlight-text">Search Kare</h2>
         </motion.div>
 

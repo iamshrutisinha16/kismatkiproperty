@@ -357,3 +357,50 @@ code {
         .card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .btn { transition: all 0.3s ease; }
         .btn:hover { transform: translateY(-2px); }
+
+  /*sidebar*/
+  .sidebar {
+  width: 250px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0f172a, #1e293b);
+  position: fixed;
+}
+
+.nav-link {
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #334155;
+  color: #fff !important;
+}
+
+.nav-link.active {
+  background-color: #2563eb !important;
+  color: white !important;
+  font-weight: 500;
+}
+
+/*dashboard*/
+.dashboard {
+  background-color: #f1f5f9;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.section-card {
+  border-radius: 12px;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}

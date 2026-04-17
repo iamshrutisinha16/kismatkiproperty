@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Card, Button, Form, Badge, Modal, Nav } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Form, Badge, Modal } from 'react-bootstrap';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Search, MapPin, Maximize2, Phone, MessageSquare, 
@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 
 const PremiumClassifieds = () => {
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeTab] = useState('all');
   const [selectedImg, setSelectedImg] = useState(null);
 
   const ads = [
@@ -122,20 +122,6 @@ const PremiumClassifieds = () => {
       <Container className="py-5">
         {/* --- NAVIGATION & FILTERS --- */}
         <div className="d-flex justify-content-between align-items-center mb-5 flex-wrap gap-3">
-          <Nav variant="pills" className="bg-white p-1 rounded-pill shadow-sm border">
-            {['all', 'sale', 'wanted'].map((tab) => (
-              <Nav.Item key={tab}>
-                <Nav.Link 
-                  active={activeTab === tab}
-                  onClick={() => setActiveTab(tab)}
-                  className={`rounded-pill px-4 text-capitalize ${activeTab === tab ? 'bg-dark text-white' : 'text-secondary'}`}
-                  style={{ cursor: 'pointer' }}
-                >
-                  {tab}
-                </Nav.Link>
-              </Nav.Item>
-            ))}
-          </Nav>
           
           <Button variant="outline-dark" className="rounded-pill px-4 py-2 fw-bold d-flex align-items-center gap-2">
             <Plus size={18} /> Post Free Ad
