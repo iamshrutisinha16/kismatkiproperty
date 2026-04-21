@@ -4,19 +4,27 @@ import { Link, useLocation } from "react-router-dom";
 const Sidebar = () => {
   const location = useLocation();
 
-  // Active class function
   const isActive = (path) => {
-    return location.pathname === path ? "nav-link active" : "nav-link text-white";
+    return location.pathname.startsWith(path)
+      ? "nav-link active bg-white text-dark fw-bold"
+      : "nav-link text-white";
   };
 
   return (
-    <div className="sidebar d-flex flex-column p-3 text-white">
+    <div
+      className="sidebar d-flex flex-column p-3 text-white"
+      style={{
+        width: "250px",
+        height: "100vh",
+        position: "fixed",
+        background: "linear-gradient(135deg, #1e293b, #0f172a)",
+      }}
+    >
+      <h4 className="mb-4 fw-bold text-center">Admin Panel</h4>
 
-      <h4 className="mb-4 fw-bold">Admin Panel</h4>
+      <ul className="nav nav-pills flex-column mb-auto gap-2">
 
-      <ul className="nav nav-pills flex-column mb-auto">
-
-        <li className="nav-item">
+        <li>
           <Link to="/admin" className={isActive("/admin")}>
             <i className="bi bi-speedometer2 me-2"></i>
             Dashboard
@@ -66,7 +74,6 @@ const Sidebar = () => {
         </li>
 
       </ul>
-
     </div>
   );
 };

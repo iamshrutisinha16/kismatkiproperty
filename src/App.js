@@ -17,8 +17,11 @@ import Signup from "./landing_page/Signup";
 import Classified from "./pages/Claasified";
 import usePageTracking from "./pages/usePageTracking";
 
-// ✅ Admin Pages
+// ✅ ADMIN
 import Dashboard from "./pages/admin/dashboard";
+import AdminClassified from "./pages/admin/AdminClassified";
+import AdminLayout from "./pages/admin/AdminLayout";
+
 // Initialize Google Analytics
 ReactGA.initialize("G-6YQ41WYR5E");
 
@@ -49,7 +52,7 @@ function App() {
 
   return (
     <div className="app-container">
-      
+
       {/* Alert */}
       {logoutMessage && (
         <Alert
@@ -68,7 +71,8 @@ function App() {
       {/* Routes */}
       <main className="content-area">
         <Routes>
-          {/* Website Routes */}
+
+          {/* 🌐 WEBSITE ROUTES */}
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<About />} />
@@ -79,8 +83,12 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/classified" element={<Classified />} />
 
-          {/* ✅ Admin Route */}
-          <Route path="/admin" element={<Dashboard />} />
+          {/* 🔥 ADMIN ROUTES (NESTED) */}
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route index element={<Dashboard />} />
+            <Route path="classified" element={<AdminClassified />} />
+          </Route>
+
         </Routes>
       </main>
 

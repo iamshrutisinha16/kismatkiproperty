@@ -1,6 +1,5 @@
 import React from 'react';
 import HeroSection from './sections/HeroSection';
-import SearchFilter from './sections/SearchFilter';
 import FeaturedProperties from './sections/FeaturedProperties';
 import PopularCities from './sections/PopularCities';
 import WhyChooseUs from './sections/WhyChooseUs';
@@ -11,7 +10,6 @@ function HomePage() {
   return (
     <div>
       <HeroSection />
-      <SearchFilter />
       <FeaturedProperties />
       <PopularCities />
       <WhyChooseUs/>

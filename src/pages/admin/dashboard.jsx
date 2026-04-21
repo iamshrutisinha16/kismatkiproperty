@@ -1,5 +1,4 @@
 import React from "react";
-import Sidebar from "./sidebar";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -41,9 +40,7 @@ const Dashboard = () => {
   return (
     <div className="d-flex">
 
-      <Sidebar />
-
-      <div className="container-fluid" style={{ marginLeft: "250px" }}>
+      <div className="container-fluid">
 
         <h2 className="my-4 fw-bold">Dashboard</h2>
 
