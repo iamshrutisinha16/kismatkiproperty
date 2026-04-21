@@ -6,7 +6,7 @@ import { FaPhoneAlt, FaSearch, FaMicrophone, FaMapMarkerAlt, FaChevronDown } fro
 function HeroSection() {
   const [activeTab, setActiveTab] = useState("Buy");
 
-  const tabs = ["Buy", "Rent", "New Launch", "Commercial", "Plots/Land", "Projects"];
+  const tabs = ["Buy", "Rent", "New Launch", "Commercial","Projects"];
 
   return (
     <section className="hero-container">

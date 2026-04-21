@@ -1,11 +1,24 @@
-body {
-  margin: 0;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Fix for Side Space */
+html, body {
+    margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden; 
+    width: 100%;
+    position: relative;
 }
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -147,8 +160,8 @@ code {
   color: white;
 }
 
-.call-text span { font-size: 12px; display: block; opacity: 0.8; }
-.call-text strong { font-size: 16px; }
+.call-text span { font-size: 10px; display: block; opacity: 0.8; }
+.call-text strong { font-size: 15px; }
 
 .explore-now-link {
   color: white;
@@ -176,7 +189,7 @@ code {
   max-width: 950px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  padding: 10px 20px 20px;
+  padding: 8px 12px 12px;
 }
 
 /* Tabs Styling */
@@ -317,6 +330,11 @@ code {
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
+  .hero-content{
+    margin-top: 5%;
+    left: 12%;
+  }
+
   .hero-banner { height: 350px; }
   .main-heading { font-size: 1.2rem; }
   .search-card-container { bottom: -120px; }
@@ -325,6 +343,7 @@ code {
   .search-tabs { overflow-x: auto; white-space: nowrap; }
   .dropdown-section { width: 100%; }
 }
+
 /*blog*/
         .video-banner {
           position: relative;
