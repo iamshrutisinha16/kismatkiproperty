@@ -331,14 +331,17 @@ code {
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .hero-content{
-    margin-top: 5%;
+    margin-top: 10%;
     left: 12%;
+  }
+  .banner-overlay{
+    margin-left: 10%;
   }
 
   .hero-banner { height: 350px; }
   .main-heading { font-size: 1.2rem; }
-  .search-card-container { bottom: -120px; }
-  .search-input-group { flex-direction: column; height: auto; padding: 10px; gap: 10px; }
+  .search-card-container { bottom: -100px; margin-top: 15px; }
+  .search-input-group { flex-direction: column; height: auto; padding: 5px; gap: 5px; }
   .input-divider { display: none; }
   .search-tabs { overflow-x: auto; white-space: nowrap; }
   .dropdown-section { width: 100%; }
@@ -462,3 +465,31 @@ code {
         .card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .btn { transition: all 0.3s ease; }
         .btn:hover { transform: translateY(-2px); }
+
+    /*property detail*/
+    .property-img {
+  width: 100%;
+  margin-top: 10%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  .property-img {
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+  }
+}
+
+.info-box {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+}
+      

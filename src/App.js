@@ -16,10 +16,12 @@ import Blog from "./pages/Blog";
 import Signup from "./landing_page/Signup";
 import Classified from "./pages/Claasified";
 import usePageTracking from "./pages/usePageTracking";
+import PropertyDetails from "./pages/PropertyDetails";
 
-// ✅ ADMIN
+//ADMIN
 import Dashboard from "./pages/admin/dashboard";
 import AdminClassified from "./pages/admin/AdminClassified";
+import AdminProperties from "./pages/admin/AdminProperties";
 import AdminLayout from "./pages/admin/AdminLayout";
 
 // Initialize Google Analytics
@@ -73,6 +75,7 @@ function App() {
         <Routes>
 
           {/* 🌐 WEBSITE ROUTES */}
+          <Route path="/property/:id" element={<PropertyDetails />} />
           <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<About />} />
@@ -87,6 +90,7 @@ function App() {
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
             <Route path="classified" element={<AdminClassified />} />
+             <Route path="properties" element={<AdminProperties />} />
           </Route>
 
         </Routes>
