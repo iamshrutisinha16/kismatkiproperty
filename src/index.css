@@ -74,6 +74,7 @@ code {
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
 :root {
   --primary-blue: #0078db;
   --text-dark: #091e42;
@@ -83,14 +84,14 @@ code {
 .hero-container {
   position: relative;
   width: 100%;
-  margin-bottom: 100px; /* Space for the overlapping card */
+  margin-bottom: 80px;
 }
 
-/* Banner Styling */
+/* Banner */
 .hero-banner {
   position: relative;
   width: 100%;
-  height: 460px; /* Not full height, just like the image */
+  height: 480px;
   overflow: hidden;
 }
 
@@ -100,147 +101,134 @@ code {
   object-fit: cover;
 }
 
+/* Overlay FIX (no margin bug) */
 .banner-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 100%);
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,0.75) 0%,
+    rgba(0,0,0,0.3) 100%
+  );
 }
 
+/* TEXT FIX (main issue was here) */
 .hero-content {
   position: absolute;
-  top: 42%;
-  left: 26%;
+  top: 50%;
+  left: 6%;
   transform: translateY(-50%);
   color: white;
   z-index: 2;
-  max-width: 600px;
-  background: rgba(0,0,0,0.4);
-  padding: 15px;
-  border-radius: 8px;
+  max-width: 520px;
 }
 
+/* TEXT SIZE CONTROL */
 .main-heading {
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   line-height: 1.4;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   font-weight: 600;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-  
 }
 
+/* BUTTONS */
 .cta-wrapper {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
 .call-card-btn {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 10px 20px;
-  border-radius: 50px;
+  background: rgba(255,255,255,0.95);
+  padding: 8px 16px;
+  border-radius: 40px;
   text-decoration: none;
   color: var(--text-dark);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .phone-icon-circle {
   background: #25d366;
-  width: 35px;
-  height: 35px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 12px;
+  margin-right: 10px;
   color: white;
 }
 
-.call-text span { font-size: 10px; display: block; opacity: 0.8; }
-.call-text strong { font-size: 15px; }
+.call-text span {
+  font-size: 10px;
+  display: block;
+  opacity: 0.8;
+}
+
+.call-text strong {
+  font-size: 14px;
+}
 
 .explore-now-link {
   color: white;
   text-decoration: none;
   font-weight: 500;
   border-bottom: 1px solid white;
-  padding-bottom: 2px;
 }
 
-/* SEARCH CARD (Overlapping) */
+/* ================= SEARCH CARD ================= */
+
 .search-card-container {
   position: absolute;
-  bottom: -40px; /* This makes it overlap */
+  bottom: -50px;
   left: 0;
   right: 0;
   display: flex;
   justify-content: center;
-  padding: 0 20px;
+  padding: 0 15px;
   z-index: 10;
 }
 
 .search-card {
   background: white;
   width: 100%;
-  max-width: 950px;
+  max-width: 900px;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  padding: 8px 12px 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  padding: 10px 12px;
 }
 
-/* Tabs Styling */
+/* Tabs */
 .search-tabs {
   display: flex;
   align-items: center;
+  gap: 10px;
   border-bottom: 1px solid #eee;
-  margin-bottom: 15px;
-  position: relative;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
 }
 
 .search-tabs button {
   background: none;
   border: none;
-  padding: 15px 20px;
+  padding: 10px 12px;
   cursor: pointer;
   font-weight: 500;
   color: #555;
-  position: relative;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .search-tabs button.active {
   color: var(--primary-blue);
-}
-
-.search-tabs button.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: var(--primary-blue);
-}
-
-.red-dot {
-  width: 6px;
-  height: 6px;
-  background: red;
-  border-radius: 50%;
-  display: inline-block;
-  margin-left: 4px;
-  vertical-align: top;
+  border-bottom: 2px solid var(--primary-blue);
 }
 
 .post-property-free {
   margin-left: auto;
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
+  font-size: 13px;
 }
 
 .free-tag {
@@ -252,30 +240,28 @@ code {
   margin-left: 5px;
 }
 
-/* Input Group Styling */
+/* Input Group */
 .search-input-group {
   display: flex;
   align-items: center;
   border: 1px solid #ddd;
   border-radius: 8px;
-  height: 55px;
-  padding: 0 5px 0 15px;
+  padding: 5px 10px;
+  gap: 10px;
 }
 
 .dropdown-section {
   display: flex;
   align-items: center;
-  gap: 10px;
-  cursor: pointer;
-  min-width: 140px;
-  color: #333;
+  gap: 8px;
+  min-width: 130px;
+  font-size: 13px;
 }
 
 .input-divider {
   width: 1px;
-  height: 30px;
+  height: 25px;
   background: #ddd;
-  margin: 0 15px;
 }
 
 .input-section {
@@ -284,24 +270,29 @@ code {
   flex: 1;
 }
 
-.search-icon-inside { color: #888; margin-right: 10px; }
+.search-icon-inside {
+  color: #888;
+  margin-right: 8px;
+}
 
 .input-section input {
   border: none;
   outline: none;
   width: 100%;
-  font-size: 15px;
+  font-size: 14px;
 }
 
+/* ACTIONS */
 .action-icons {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
 }
 
-.geo-icon, .mic-icon {
+.geo-icon,
+.mic-icon {
   color: var(--primary-blue);
-  font-size: 18px;
+  font-size: 16px;
   cursor: pointer;
 }
 
@@ -309,42 +300,77 @@ code {
   background: var(--primary-blue);
   color: white;
   border: none;
-  padding: 10px 30px;
+  padding: 8px 18px;
   border-radius: 6px;
   font-weight: 600;
   cursor: pointer;
-  margin-left: 10px;
 }
 
-/* Animations */
+/* ANIMATION */
 .vibrating-phone {
   animation: vibrate 0.5s infinite;
 }
 
 @keyframes vibrate {
   0% { transform: rotate(0deg); }
-  25% { transform: rotate(-15deg); }
-  50% { transform: rotate(15deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
   100% { transform: rotate(0deg); }
 }
 
-/* Mobile Responsive */
+/* ================= MOBILE ================= */
+
 @media (max-width: 768px) {
-  .hero-content{
-    margin-top: 10%;
-    left: 12%;
-  }
-  .banner-overlay{
-    margin-left: 10%;
+
+  .hero-banner {
+    height: 320px;
   }
 
-  .hero-banner { height: 350px; }
-  .main-heading { font-size: 1.2rem; }
-  .search-card-container { bottom: -100px; margin-top: 15px; }
-  .search-input-group { flex-direction: column; height: auto; padding: 5px; gap: 5px; }
-  .input-divider { display: none; }
-  .search-tabs { overflow-x: auto; white-space: nowrap; }
-  .dropdown-section { width: 100%; }
+  .hero-content {
+    margin-top: 9%;
+    left: 5%;
+    right: 5%;
+    max-width: 100%;
+  }
+
+  .main-heading {
+    font-size: 1.3rem;
+  }
+
+  .cta-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-card-container {
+    position: static;
+    margin-top: 15px;
+  }
+
+  .search-input-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .input-divider {
+    display: none;
+  }
+
+  .dropdown-section,
+  .input-section,
+  .main-search-btn {
+    width: 100%;
+  }
+
+  .action-icons {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .search-tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 }
 
 /*blog*/

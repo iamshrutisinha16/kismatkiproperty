@@ -168,7 +168,7 @@ const AdminProperties = () => {
           </Row>
 
           <Button className="mt-3" type="submit">
-            Add Classified
+            Add Property
           </Button>
         </Form>
       </Card>

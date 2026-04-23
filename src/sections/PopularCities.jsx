@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 
 const cities = [
-  { name: "Mumbai", image: "/assets/mumbai.webp" },
+  { name: "Gurgaon", image: "/assets/gurugoan.jpg" },
   { name: "Delhi", image: "/assets/delhi.webp" },
-  { name: "Bangalore", image: "/assets/banglore.webp" },
-  { name: "Hyderabaad", image: "/assets/hydrabaad.jpg" },
-  { name: "Pune", image: "/assets/pune.png" },
+  { name: "Noida", image: "/assets/Noida1.webp" },
+  { name: "Greater Noida", image: "/assets/noidaevents.png" },
+  { name: "Ghaziabad", image: "/assets/pune.png" },
   { name: "Kolkata", image: "/assets/kolkata.jpg" },
 ];
 
