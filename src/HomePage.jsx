@@ -1,6 +1,7 @@
 import React from 'react';
 import HeroSection from './sections/HeroSection';
 import FeaturedProperties from './sections/FeaturedProperties';
+import Advertise from './sections/Advertise';
 import PopularCities from './sections/PopularCities';
 import WhyChooseUs from './sections/WhyChooseUs';
 import SellProperty from './sections/SellProperty';
@@ -11,6 +12,7 @@ function HomePage() {
     <div>
       <HeroSection />
       <FeaturedProperties />
+      <Advertise />
       <PopularCities />
       <WhyChooseUs/>
       <SellProperty/>
