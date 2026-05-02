@@ -22,7 +22,7 @@ const AdvertiseWithUs = () => {
           <div className="ad-image-wrapper">
             <img
               className="d-block w-100 ad-image"
-              src="/assets/advertisement1.png"
+              src="/assets/advertisementvideo.mp4"
               alt="Advertise 1"
             />
           </div>

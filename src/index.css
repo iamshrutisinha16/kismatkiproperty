@@ -521,8 +521,8 @@ code {
       
 /*advertisement*/
 .ad-image-wrapper {
-  width: 100%;
-  height: 500px;
+  width: 110%;
+  height: 550px;
   overflow: hidden;
   border-radius: 15px;
 }
@@ -530,7 +530,7 @@ code {
 .ad-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* image fatne nahi dega */
+  object-fit: cover; 
   transition: transform 5s ease;
 }
 
