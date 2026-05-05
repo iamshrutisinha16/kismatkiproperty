@@ -318,58 +318,107 @@ code {
   100% { transform: rotate(0deg); }
 }
 
-/* ================= MOBILE ================= */
+/* Desktop logic hide/show */
+.mobile-action-grid { display: none; }
 
 @media (max-width: 768px) {
-
+  .desktop-only { display: none !important; }
+  
   .hero-banner {
+
     height: 320px;
+
   }
+
+
 
   .hero-content {
+
     margin-top: 9%;
+
     left: 5%;
+
     right: 5%;
+
     max-width: 100%;
+
   }
+
+
 
   .main-heading {
+
     font-size: 1.3rem;
+
+  }
+  /* Grid Layout (99acres style) */
+  .mobile-action-grid {
+    display: block;
+    margin-bottom: 20px;
   }
 
-  .cta-wrapper {
+  .mobile-grid-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+  }
+
+  .grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+
+  .grid-item {
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
   }
 
+  .grid-icon-box {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  .grid-item span {
+    font-size: 11px;
+    font-weight: 500;
+    color: #666;
+  }
+
+  /* Search Input Mobile */
   .search-card-container {
-    position: static;
-    margin-top: 15px;
+    position: relative;
+    bottom: 0;
+    margin-top: -40px; /* Pull it up over the banner */
+    padding: 0 15px;
+  }
+
+  .search-card {
+    padding: 20px 15px;
   }
 
   .search-input-group {
-    flex-direction: column;
-    align-items: stretch;
+    border: 1px solid #3465C2;
+    box-shadow: 0 4px 15px rgba(52, 101, 194, 0.2);
+    border-radius: 30px; /* Round pill shape like 99acres */
+    padding: 10px 20px;
   }
 
-  .input-divider {
-    display: none;
-  }
-
-  .dropdown-section,
-  .input-section,
-  .main-search-btn {
-    width: 100%;
-  }
-
-  .action-icons {
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .search-tabs {
-    overflow-x: auto;
-    white-space: nowrap;
+  .mic-icon-mobile {
+    color: #3465C2;
+    margin-left: 10px;
   }
 }
 
