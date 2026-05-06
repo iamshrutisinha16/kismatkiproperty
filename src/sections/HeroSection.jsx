@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { FaPhoneAlt, FaSearch, FaMicrophone,FaHome, FaBuilding, FaBriefcase, FaProjectDiagram, FaChartLine } from "react-icons/fa";
+import { FaPhoneAlt, FaSearch, FaMicrophone,FaHome, FaBuilding, FaBriefcase, FaProjectDiagram } from "react-icons/fa";
 
 function HeroSection() {
   const [activeTab, setActiveTab] = useState("Buy");
@@ -16,7 +16,7 @@ function HeroSection() {
     { name: "Rent", icon: <FaBuilding />, color: "#2F5BB0" },
     { name: "New Projects", icon: <FaProjectDiagram />, color: "#294F9A" },
    { name: "Commercial", icon: <FaBriefcase />, color: "#2F5BB0" },
-    { name: "Insights", icon: <FaChartLine />, color: "#25d366" },
+
   ];
 
   const handleSearch = () => {
