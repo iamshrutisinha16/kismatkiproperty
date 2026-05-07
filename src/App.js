@@ -16,6 +16,7 @@ import Signup from "./landing_page/Signup";
 import Classified from "./pages/Claasified";
 import usePageTracking from "./pages/usePageTracking";
 import PropertyDetails from "./pages/PropertyDetails";
+import Listings from "./pages/Listings";
 
 // ADMIN
 import Dashboard from "./pages/admin/dashboard";
@@ -52,6 +53,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/classified" element={<Classified />} />
+          <Route path="/properties" element={<Listings />} />
 
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
