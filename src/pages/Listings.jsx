@@ -1,101 +1,49 @@
-import React, {
-  useEffect,
-  useState,
-} from "react";
-
-import {
-  useLocation,
-  Link,
-} from "react-router-dom";
-
+import React, {useEffect, useState,} from "react";
+import { useLocation,Link,} from "react-router-dom";
 import axios from "axios";
 
 function Listings() {
+const [listings, setListings] =useState([]);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState(null);
+const { search } = useLocation();
 
-  const [listings, setListings] =
-    useState([]);
+// URL PARAMS
+const queryParams = new URLSearchParams(search);
+const category = queryParams.get("category") || "";
+const city = queryParams.get("city") || "";
 
-  const [loading, setLoading] =
-    useState(true);
-
-  const [error, setError] =
-    useState(null);
-
-  const { search } =
-    useLocation();
-
-  // URL PARAMS
-  const queryParams =
-    new URLSearchParams(search);
-
-  const category =
-    queryParams.get("category") || "";
-
-  const city =
-    queryParams.get("city") || "";
+// FETCH DATA
+useEffect(() => { const fetchListings =  async () => {
+try {
+    setLoading(true);
+    const response = await axios.get( "https://kismatkiproperty-backend.onrender.com/api/properties");
+    let filteredData = response.data;
+    console.log( "ALL DATA:", filteredData);
 
 
-
-  // FETCH DATA
-  useEffect(() => {
-
-    const fetchListings =
-      async () => {
-
-        try {
-
-          setLoading(true);
-
-          const response =
-            await axios.get(
-              "https://kismatkiproperty-backend.onrender.com/api/properties"
-            );
-
-          let filteredData =
-            response.data;
-
-          console.log(
-            "ALL DATA:",
-            filteredData
-          );
-
-        // CATEGORY FILTER
+    // CATEGORY FILTER
 if (category) {
-
-  filteredData =
-    filteredData.filter(
-      (item) =>
-
-        item.type &&
-        item.type
-          .toLowerCase()
-          .trim() ===
-        category
-          .toLowerCase()
-          .trim()
-    );
+  filteredData = filteredData.filter(
+    (item) =>
+      item.type &&
+      item.type.toLowerCase().trim() ===
+        category.toLowerCase().trim()
+  );
 }
 
-          // LOCATION FILTER
-          if (city) {
-
-            filteredData =
-              filteredData.filter(
-                (item) =>
-
-                  item.location &&
-                  item.location
-                    .toLowerCase()
-                    .trim()
-                    .includes(
-                      city
-                        .toLowerCase()
-                        .trim()
-                    )
-              );
-          }
-
-          console.log(
+// LOCATION FILTER
+if (city) {
+  filteredData = filteredData.filter(
+    (item) =>
+      item.location &&
+      item.location
+        .toLowerCase()
+        .trim()
+        .includes(city.toLowerCase().trim())
+  );
+}
+           console.log(
             "FILTERED:",
             filteredData
           );
@@ -122,8 +70,6 @@ if (category) {
 
   }, [category, city]);
 
-
-
   // LOADING
   if (loading) {
 
@@ -139,8 +85,6 @@ if (category) {
       </div>
     );
   }
-
-
 
   // ERROR
   if (error) {
@@ -158,8 +102,6 @@ if (category) {
       </div>
     );
   }
-
-
 
   return (
     <div
@@ -286,56 +228,18 @@ if (category) {
 
                 </div>
 
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems:"center",}}>
 
-
-                <div
-                  style={{
-                    display: "flex",
-
-                    justifyContent:
-                      "space-between",
-
-                    alignItems:
-                      "center",
-                  }}
-                >
-
-                  <h3
-                    style={{
-                      color: "#007bff",
-                      margin: 0,
-                    }}
-                  >
+                  <h3 style={{ color: "#007bff", margin: 0,}}>
                     ₹{" "}
                     {property.price ||
                       "On Call"}
                   </h3>
 
-
-
                   <Link
                     to={`/property/${property._id}`}
-                    style={{
-                      padding:
-                        "10px 16px",
-
-                      border: "none",
-
-                      background:
-                        "#007bff",
-
-                      color: "#fff",
-
-                      borderRadius:
-                        "8px",
-
-                      textDecoration:
-                        "none",
-
-                      fontWeight:
-                        "600",
-                    }}
-                  >
+                    style={{padding: "10px 16px", border: "none", background:"#007bff",color: "#fff",
+                    borderRadius:"8px", textDecoration:"none", fontWeight:"600",}}>
                     Details
                   </Link>
 
@@ -348,13 +252,7 @@ if (category) {
         ) : (
 
           <div
-            style={{
-              gridColumn: "1/-1",
-              textAlign: "center",
-              padding: "60px",
-            }}
-          >
-
+            style={{ gridColumn: "1/-1", textAlign: "center", padding: "60px",}}>
             <h2>
               No Properties Found
             </h2>
