@@ -4,64 +4,135 @@ import { Carousel } from "react-bootstrap";
 
 const AdvertiseWithUs = () => {
   return (
-    <div className="container my-5">
-      
-      {/* Section Heading */}
-      <h2 className="text-center fw-bold mb-4">
-        Advertise With Us
-      </h2>
+    <section className="advertise-section">
+      <div className="container">
 
-      <Carousel
-        fade
-        interval={4000}
-        pause={false}
-        indicators={true}
-      >
-        {/* Slide 1 */}
-        <Carousel.Item>
-          <div className="ad-image-wrapper">
-            <img
-              className="d-block w-100 ad-image"
-              src="/assets/advertisementvideo.mp4"
-              alt="Advertise 1"
-            />
-          </div>
-        </Carousel.Item>
+        {/* Heading */}
+        <div className="text-center mb-5">
+          <span className="advertise-tag">
+            Premium Property Ads
+          </span>
 
-        {/* Slide 2 */}
-        <Carousel.Item>
-          <div className="ad-image-wrapper">
-            <img
-              className="d-block w-100 ad-image"
-              src="/assets/advertisement2.png"
-              alt="Advertise 2"
-            />
-          </div>
-        </Carousel.Item>
+          <h2 className="advertise-heading">
+            Advertise With Us
+          </h2>
 
-        {/* Slide 2 */}
-        <Carousel.Item>
-          <div className="ad-image-wrapper">
-            <img
-              className="d-block w-100 ad-image"
-              src="/assets/advertisement.png"
-              alt="Advertise 2"
-            />
-          </div>
-        </Carousel.Item>
+          <p className="advertise-subtitle">
+            Promote your luxury properties with high visibility,
+            stunning showcase banners and premium reach.
+          </p>
+        </div>
 
-        {/* Slide 3 */}
-        <Carousel.Item>
-          <div className="ad-image-wrapper">
-            <img
-              className="d-block w-100 ad-image"
-              src="/assets/advertisement3.png"
-              alt="Advertise 3"
-            />
-          </div>
-        </Carousel.Item>
-      </Carousel>
-    </div>
+        {/* Carousel */}
+        <div className="advertise-carousel-wrapper">
+
+          <Carousel
+            fade
+            interval={3500}
+            pause={false}
+            indicators={true}
+            controls={true}
+          >
+
+            {/* VIDEO SLIDE */}
+            <Carousel.Item>
+              <div className="media-wrapper">
+                <video
+                  className="advertise-media"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                >
+                  <source
+                    src="/assets/advertisementvideo.mp4"
+                    type="video/mp4"
+                  />
+                </video>
+
+                <div className="overlay-content">
+                  <h3>Luxury Property Promotions</h3>
+                  <p>
+                    Showcase premium homes with cinematic presentation.
+                  </p>
+
+                  <button className="explore-btn">
+                    Explore More
+                  </button>
+                </div>
+              </div>
+            </Carousel.Item>
+
+            {/* IMAGE 1 */}
+            <Carousel.Item>
+              <div className="media-wrapper">
+                <img
+                  className="advertise-media"
+                  src="/assets/advertisement2.png"
+                  alt="Advertisement 1"
+                />
+
+                <div className="overlay-content">
+                  <h3>Trusted Real Estate Platform</h3>
+                  <p>
+                    Reach thousands of property buyers instantly.
+                  </p>
+
+                  <button className="explore-btn">
+                    View Properties
+                  </button>
+                </div>
+              </div>
+            </Carousel.Item>
+
+            {/* IMAGE 2 */}
+            <Carousel.Item>
+              <div className="media-wrapper">
+                <img
+                  className="advertise-media"
+                  src="/assets/advertisement.png"
+                  alt="Advertisement 2"
+                />
+
+                <div className="overlay-content">
+                  <h3>Premium Listings</h3>
+                  <p>
+                    Modern properties with best locations & pricing.
+                  </p>
+
+                  <button className="explore-btn">
+                    Get Started
+                  </button>
+                </div>
+              </div>
+            </Carousel.Item>
+
+            {/* IMAGE 3 */}
+            <Carousel.Item>
+              <div className="media-wrapper">
+                <img
+                  className="advertise-media"
+                  src="/assets/advertisement3.png"
+                  alt="Advertisement 3"
+                />
+
+                <div className="overlay-content">
+                  <h3>Luxury Living Experience</h3>
+                  <p>
+                    Elegant homes crafted for modern lifestyle.
+                  </p>
+
+                  <button className="explore-btn">
+                    Contact Now
+                  </button>
+                </div>
+              </div>
+            </Carousel.Item>
+
+          </Carousel>
+        </div>
+      </div>
+    </section>
   );
 };
 
