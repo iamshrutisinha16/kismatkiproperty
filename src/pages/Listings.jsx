@@ -5,6 +5,7 @@ import React, {
 
 import {
   useLocation,
+  Link,
 } from "react-router-dom";
 
 import axios from "axios";
@@ -28,14 +29,10 @@ function Listings() {
     new URLSearchParams(search);
 
   const category =
-    queryParams.get(
-      "category"
-    ) || "";
+    queryParams.get("category") || "";
 
   const city =
-    queryParams.get(
-      "city"
-    ) || "";
+    queryParams.get("city") || "";
 
 
 
@@ -62,44 +59,22 @@ function Listings() {
             filteredData
           );
 
-          console.log(
-            "CATEGORY:",
-            category
-          );
+        // CATEGORY FILTER
+if (category) {
 
-          console.log(
-            "CITY:",
-            city
-          );
+  filteredData =
+    filteredData.filter(
+      (item) =>
 
-
-
-          // CATEGORY FILTER
-          // Sirf tab chalega jab DB me type field ho
-          if (category) {
-
-            filteredData =
-              filteredData.filter(
-                (item) => {
-
-                  // Agar type nahi hai toh all show
-                  if (!item.type) {
-                    return true;
-                  }
-
-                  return (
-                    item.type
-                      ?.toLowerCase()
-                      .trim() ===
-                    category
-                      .toLowerCase()
-                      .trim()
-                  );
-                }
-              );
-          }
-
-
+        item.type &&
+        item.type
+          .toLowerCase()
+          .trim() ===
+        category
+          .toLowerCase()
+          .trim()
+    );
+}
 
           // LOCATION FILTER
           if (city) {
@@ -107,6 +82,7 @@ function Listings() {
             filteredData =
               filteredData.filter(
                 (item) =>
+
                   item.location &&
                   item.location
                     .toLowerCase()
@@ -139,7 +115,6 @@ function Listings() {
         } finally {
 
           setLoading(false);
-
         }
       };
 
@@ -151,6 +126,7 @@ function Listings() {
 
   // LOADING
   if (loading) {
+
     return (
       <div
         style={{
@@ -168,6 +144,7 @@ function Listings() {
 
   // ERROR
   if (error) {
+
     return (
       <div
         style={{
@@ -193,7 +170,7 @@ function Listings() {
       }}
     >
 
-      {/* PAGE TITLE */}
+      {/* TITLE */}
       <h2
         style={{
           textAlign: "center",
@@ -235,8 +212,6 @@ function Listings() {
 
                 boxShadow:
                   "0 4px 15px rgba(0,0,0,0.08)",
-
-                transition: "0.3s",
               }}
             >
 
@@ -244,7 +219,6 @@ function Listings() {
               <img
                 src={
                   property.image ||
-                  property.images?.[0] ||
                   "https://via.placeholder.com/400x250"
                 }
 
@@ -266,7 +240,6 @@ function Listings() {
                 }}
               >
 
-                {/* TITLE */}
                 <h3
                   style={{
                     marginBottom: "10px",
@@ -279,7 +252,6 @@ function Listings() {
 
 
 
-                {/* LOCATION */}
                 <p
                   style={{
                     color: "#666",
@@ -291,7 +263,6 @@ function Listings() {
 
 
 
-                {/* DETAILS */}
                 <div
                   style={{
                     display: "flex",
@@ -317,7 +288,6 @@ function Listings() {
 
 
 
-                {/* PRICE + BUTTON */}
                 <div
                   style={{
                     display: "flex",
@@ -341,7 +311,10 @@ function Listings() {
                       "On Call"}
                   </h3>
 
-                  <button
+
+
+                  <Link
+                    to={`/property/${property._id}`}
                     style={{
                       padding:
                         "10px 16px",
@@ -356,17 +329,18 @@ function Listings() {
                       borderRadius:
                         "8px",
 
-                      cursor:
-                        "pointer",
+                      textDecoration:
+                        "none",
 
                       fontWeight:
                         "600",
                     }}
                   >
                     Details
-                  </button>
+                  </Link>
 
                 </div>
+
               </div>
             </div>
           ))
