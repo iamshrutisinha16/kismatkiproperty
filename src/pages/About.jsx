@@ -35,24 +35,31 @@ const About = () => {
 
       {/* 🔸 About Section */}
       <div className="about-container">
-        <motion.div
-          initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, amount: 0.3 }}
-          className="about-text"
-        >
-          <h3>Over 20 Years of Trust 🏡</h3>
-          <p>
-            Founded two decades ago, <strong>Kismat Ki Property</strong> has become a trusted name in India's real estate sector. Whether you're looking to <strong>buy</strong>, <strong>sell</strong>, or explore <strong>loan-assisted properties</strong>, our experienced team is here to help.
-          </p>
-          <p>
-            Our legacy is built on customer satisfaction, legal transparency, and timely delivery. We’ve helped thousands find their dream homes and investment opportunities.
-          </p>
-          <p>
-            We continue to innovate and expand, offering tailored property solutions for individuals and businesses across India.
-          </p>
-        </motion.div>
+      <motion.div
+  initial={{ opacity: 0, x: -50 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true, amount: 0.3 }}
+  className="about-text"
+>
+  <h3>Smart Property Promotion Platform 📢</h3>
+
+  <p>
+    <strong>Kismat Ki Property</strong> is a trusted real estate advertising and promotion platform specializing in builder advertisement, property branding, and smart promotional solutions across India.
+  </p>
+
+  <p>
+    Our main focus is helping builders, property owners, and sellers promote their residential and commercial projects to the right audience through effective marketing, branding, and lead generation services.
+  </p>
+
+  <p>
+    We connect property seekers according to their budget and requirements while providing verified listings, audience matching, and professional promotional support for better visibility and genuine responses.
+  </p>
+
+  <p>
+    Guided by <strong>Swami Prem Dhiraj</strong>, we are committed to creating a modern platform built on trust, transparency, branding excellence, and customer satisfaction.
+  </p>
+</motion.div>
 
         <motion.div
           initial={{ opacity: 0, x: 50 }}
@@ -68,7 +75,7 @@ const About = () => {
         </motion.div>
       </div>
 
-      {/* 💎 Core Values Section */}
+      {/* Core Values Section */}
       <div className="values-section">
         <motion.h3
           initial={{ opacity: 0 }}
@@ -120,132 +127,6 @@ const About = () => {
           ))}
         </div>
       </div>
-
-      {/* 🎨 CSS Styles */}
-      <style jsx>{`
-        .banner-wrapper {
-          position: relative;
-          width: 100%;
-          overflow: hidden;
-        }
-        .banner-inner {
-          position: relative;
-          width: 100%;
-          aspect-ratio: 16 / 9;
-          max-height: 420px;
-        }
-        .banner-video {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-        .video-overlay {
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        .banner-heading {
-          font-size: clamp(28px, 6vw, 48px);
-          font-weight: bold;
-          color: white;
-          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
-        }
-
-        .about-container {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 40px;
-          max-width: 1100px;
-          margin: 50px auto;
-          padding: 0 20px;
-        }
-        .about-text, .about-image {
-          flex: 1 1 400px;
-          min-width: 280px;
-        }
-        .about-text p {
-          margin-bottom: 16px;
-          line-height: 1.6;
-        }
-        .about-image img {
-          width: 100%;
-          border-radius: 12px;
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .values-section {
-          background: #f9f9f9;
-          padding: 60px 20px;
-          text-align: center;
-        }
-        .values-grid {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 25px;
-          justify-content: center;
-          max-width: 1000px;
-          margin: auto;
-        }
-        .value-card {
-          background: white;
-          padding: 20px;
-          border-radius: 10px;
-          flex: 1 1 220px;
-          box-shadow: 0 4px 14px rgba(0,0,0,0.08);
-        }
-        .value-icon {
-          font-size: 32px;
-          margin-bottom: 10px;
-        }
-
-        .gallery-wrapper {
-          padding: 60px 20px;
-          max-width: 1100px;
-          margin: 0 auto;
-          text-align: center;
-        }
-        .gallery-heading {
-          font-size: 28px;
-          margin-bottom: 30px;
-        }
-        .gallery-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-          gap: 20px;
-        }
-        .gallery-card {
-          border-radius: 10px;
-          overflow: hidden;
-          box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-          transition: transform 0.3s ease;
-        }
-        .gallery-card img {
-          width: 100%;
-          height: 200px;
-          object-fit: cover;
-          display: block;
-        }
-        .gallery-card:hover {
-          transform: scale(1.02);
-        }
-
-        @media (max-width: 768px) {
-          .banner-inner {
-            aspect-ratio: 16 / 9;
-          }
-        }
-        @media (max-width: 480px) {
-          .banner-inner {
-            aspect-ratio: 16 / 10;
-          }
-        }
-      `}</style>
     </div>
   );
 };

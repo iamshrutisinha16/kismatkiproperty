@@ -91,14 +91,16 @@ function BlueprintSection() {
       {/* Blueprint Section */}
       <section className="py-5 bg-light" id="blueprint">
         <Container>
-          <motion.h2
-            className="text-center mb-5 fw-bold"
-            initial={{ opacity: 0, y: -30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Our Blueprint to Your Dream Property
-          </motion.h2>
+        <section style={{ overflow: "visible", paddingTop: "40px" }}>
+  <motion.h2
+    className="text-center mb-5 fw-bold"
+    initial={{ opacity: 0, y: 0 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6 }}
+  >
+    Our Blueprint to Your Dream Property
+  </motion.h2>
+</section>
           <Row className="align-items-center">
             <Col md={6} className="mb-4 mb-md-0">
               <motion.img

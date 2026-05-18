@@ -1,7 +1,7 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Carousel } from "react-bootstrap";
-
+ 
 const AdvertiseWithUs = () => {
   return (
     <section className="advertise-section">
@@ -50,16 +50,6 @@ const AdvertiseWithUs = () => {
                   />
                 </video>
 
-                <div className="overlay-content">
-                  <h3>Luxury Property Promotions</h3>
-                  <p>
-                    Showcase premium homes with cinematic presentation.
-                  </p>
-
-                  <button className="explore-btn">
-                    Explore More
-                  </button>
-                </div>
               </div>
             </Carousel.Item>
 
@@ -72,16 +62,6 @@ const AdvertiseWithUs = () => {
                   alt="Advertisement 1"
                 />
 
-                <div className="overlay-content">
-                  <h3>Trusted Real Estate Platform</h3>
-                  <p>
-                    Reach thousands of property buyers instantly.
-                  </p>
-
-                  <button className="explore-btn">
-                    View Properties
-                  </button>
-                </div>
               </div>
             </Carousel.Item>
 
@@ -93,17 +73,6 @@ const AdvertiseWithUs = () => {
                   src="/assets/advertisement.png"
                   alt="Advertisement 2"
                 />
-
-                <div className="overlay-content">
-                  <h3>Premium Listings</h3>
-                  <p>
-                    Modern properties with best locations & pricing.
-                  </p>
-
-                  <button className="explore-btn">
-                    Get Started
-                  </button>
-                </div>
               </div>
             </Carousel.Item>
 
@@ -115,17 +84,6 @@ const AdvertiseWithUs = () => {
                   src="/assets/advertisement3.png"
                   alt="Advertisement 3"
                 />
-
-                <div className="overlay-content">
-                  <h3>Luxury Living Experience</h3>
-                  <p>
-                    Elegant homes crafted for modern lifestyle.
-                  </p>
-
-                  <button className="explore-btn">
-                    Contact Now
-                  </button>
-                </div>
               </div>
             </Carousel.Item>
 
