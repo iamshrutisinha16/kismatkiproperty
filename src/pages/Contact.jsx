@@ -47,7 +47,7 @@ const ContactPage = () => {
           {[
             { icon: <MapPin className="text-danger" />, title: "Head Office", desc: "B-1/628, 2nd Floor, Janakpuri East Metro Station, New Delhi", sub: "Branches: South Delhi, Gurugram, Noida" },
             { icon: <Phone className="text-success" />, title: "Mobile", desc: "+91 8595076589", sub: "Call us for site visits" },
-            { icon: <Mail className="text-primary" />, title: "Email", desc: "property.charukhanna@gmail.com", sub: "24/7 Email Support" },
+            { icon: <Mail className="text-primary" />, title: "Email", desc: "Rishabbajajfilms@gmail.com", sub: "24/7 Email Support" },
             { icon: <Clock className="text-warning" />, title: "Working Hours", desc: "Mon - Sat: 10am - 7pm", sub: "Sunday: Closed" }
           ].map((item, index) => (
             <div className="col-md-6 col-lg-3" key={index}>
