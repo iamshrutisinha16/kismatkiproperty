@@ -42,27 +42,84 @@ const ContactPage = () => {
 
       <div className="container py-5">
         
-        {/* 2. CONTACT INFO CARDS */}
-        <div className="row g-4 mb-5">
-          {[
-            { icon: <MapPin className="text-danger" />, title: "Head Office", desc: "B-1/628, 2nd Floor, Janakpuri East Metro Station, New Delhi", sub: "Branches: South Delhi, Gurugram, Noida" },
-            { icon: <Phone className="text-success" />, title: "Mobile", desc: "+91 8595076589", sub: "Call us for site visits" },
-            { icon: <Mail className="text-primary" />, title: "Email", desc: "Rishabbajajfilms@gmail.com", sub: "24/7 Email Support" },
-            { icon: <Clock className="text-warning" />, title: "Working Hours", desc: "Mon - Sat: 10am - 7pm", sub: "Sunday: Closed" }
-          ].map((item, index) => (
-            <div className="col-md-6 col-lg-3" key={index}>
-              <motion.div 
-                whileHover={{ scale: 1.03 }}
-                className="card h-100 border-0 shadow-sm p-3 text-center"
-              >
-                <div className="mb-3">{item.icon}</div>
-                <h5 className="fw-bold">{item.title}</h5>
-                <p className="mb-1 text-secondary small">{item.desc}</p>
-                <small className="text-muted" style={{fontSize: '11px'}}>{item.sub}</small>
-              </motion.div>
-            </div>
-          ))}
-        </div>
+      {/* 2. CONTACT INFO CARDS */}
+<div className="row g-4 mb-5">
+  {[
+    {
+      icon: <MapPin className="text-danger" />,
+      title: "Head Office",
+      desc: "B-1/628, 2nd Floor, Janakpuri East Metro Station, New Delhi",
+      sub: "Branches: South Delhi, Gurugram, Noida",
+      type: "map"
+    },
+    {
+      icon: <Phone className="text-success" />,
+      title: "Mobile",
+      desc: "+91 8595076589",
+      sub: "Call us for site visits",
+      type: "phone"
+    },
+    {
+      icon: <Mail className="text-primary" />,
+      title: "Email",
+      desc: "Rishabbajajfilms@gmail.com",
+      sub: "24/7 Email Support",
+      type: "email"
+    },
+    {
+      icon: <Clock className="text-warning" />,
+      title: "Working Hours",
+      desc: "Mon - Sat: 10am - 7pm",
+      sub: "Sunday: Closed",
+      type: "info"
+    }
+  ].map((item, index) => {
+
+    // links generate
+    const phoneLink = "tel:+918595076589";
+    const emailLink = "mailto:Rishabbajajfilms@gmail.com";
+    const mapLink =
+      "https://www.google.com/maps/search/?api=1&query=" +
+      encodeURIComponent(item.desc);
+
+    const Wrapper =
+      item.type === "phone"
+        ? "a"
+        : item.type === "email"
+        ? "a"
+        : item.type === "map"
+        ? "a"
+        : "div";
+
+    const extraProps =
+      item.type === "phone"
+        ? { href: phoneLink }
+        : item.type === "email"
+        ? { href: emailLink }
+        : item.type === "map"
+        ? { href: mapLink, target: "_blank", rel: "noreferrer" }
+        : {};
+
+    return (
+      <div className="col-md-6 col-lg-3" key={index}>
+        <motion.div
+          whileHover={{ scale: 1.03 }}
+          className="card h-100 border-0 shadow-sm p-3 text-center"
+          style={{ cursor: item.type !== "info" ? "pointer" : "default" }}
+        >
+          <Wrapper {...extraProps} style={{ textDecoration: "none", color: "inherit" }}>
+            <div className="mb-3">{item.icon}</div>
+            <h5 className="fw-bold">{item.title}</h5>
+            <p className="mb-1 text-secondary small">{item.desc}</p>
+            <small className="text-muted" style={{ fontSize: "11px" }}>
+              {item.sub}
+            </small>
+          </Wrapper>
+        </motion.div>
+      </div>
+    );
+  })}
+</div>
 
         <div className="row g-5">
           {/* 3. LEAVE A MESSAGE FORM */}

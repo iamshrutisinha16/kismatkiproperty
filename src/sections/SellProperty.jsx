@@ -62,7 +62,7 @@ const SellProperty = () => {
         </div>
 
         <a
-          href="/sell"
+          href="/sell-property"
           className="btn btn-primary btn-lg mt-4 px-4 py-2"
         >
           Sell Now

@@ -17,6 +17,7 @@ import Classified from "./pages/Claasified";
 import usePageTracking from "./pages/usePageTracking";
 import PropertyDetails from "./pages/PropertyDetails";
 import Listings from "./pages/Listings";
+import SellProperty from "./pages/sellpropertyform";
 
 // ADMIN
 import Dashboard from "./pages/admin/dashboard";
@@ -54,6 +55,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/classified" element={<Classified />} />
           <Route path="/properties" element={<Listings />} />
+          <Route path="/sell-property" element={<SellProperty />} />
 
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<Dashboard />} />
