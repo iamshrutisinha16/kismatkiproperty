@@ -422,6 +422,65 @@ code {
   }
 }
 
+.download-pdf-btn{
+  background: #e63946;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: 0.3s ease;
+  white-space: nowrap;
+  font-size: 16px;
+}
+
+.download-pdf-btn:hover{
+  background: #c1121f;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px){
+
+  .hero-banner{
+    height: 455px; /* increase height */
+  }
+
+  .hero-content{
+    top: 55%;
+    left: 20px;
+    right: 20px;
+    transform: translateY(-50%);
+    width: calc(100% - 40px);
+  }
+
+  .main-heading{
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .cta-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .call-card-btn,
+  .download-pdf-btn{
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .download-pdf-btn{
+    justify-content: center;
+  }
+
+}
 /*blog*/
         .video-banner {
           position: relative;

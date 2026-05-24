@@ -90,75 +90,78 @@ function HeroSection() {
   return (
     <section className="hero-container">
 
-      {/* HERO BANNER */}
-      <div className="hero-banner">
+    {/* HERO BANNER */}
+<div className="hero-banner">
 
-        <img
-          src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop"
-          alt="Banner"
-          className="banner-img"
-        />
+  <img
+    src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop"
+    alt="Banner"
+    className="banner-img"
+  />
 
-        <div className="banner-overlay"></div>
+  <div className="banner-overlay"></div>
 
-        <div className="hero-content">
+  <div className="hero-content">
 
-          <motion.div
-            initial={{
-              opacity: 0,
-              x: -50,
-            }}
+    <motion.div
+      initial={{
+        opacity: 0,
+        x: -50,
+      }}
+      animate={{
+        opacity: 1,
+        x: 0,
+      }}
+    >
 
-            animate={{
-              opacity: 1,
-              x: 0,
-            }}
-          >
+      <h1 className="main-heading">
+        Agar aap apni purani
+        property bechna chahte
+        hain, toh bas ek
+        missed call dein!
+      </h1>
 
-            <h1 className="main-heading">
-              Agar aap apni purani
-              property bechna chahte
-              hain, toh bas ek
-              missed call dein!
-            </h1>
+      <div className="cta-wrapper">
 
-            <div className="cta-wrapper">
+        {/* CALL BUTTON */}
+        <a
+          href="tel:8595076589"
+          className="call-card-btn"
+        >
 
-              <a
-                href="tel:8595076589"
-                className="call-card-btn"
-              >
+          <div className="phone-icon-circle">
+            <FaPhoneAlt />
+          </div>
 
-                <div className="phone-icon-circle">
-                  <FaPhoneAlt />
-                </div>
+          <div className="call-text">
+            <span>अभी कॉल करें</span>
+            <strong>8595076589</strong>
+          </div>
 
-                <div className="call-text">
+        </a>
 
-                  <span>
-                    अभी कॉल करें
-                  </span>
+        {/* EXPLORE BUTTON */}
+        <Link
+          to="/classified"
+          className="explore-now-link"
+        >
+          Explore Now →
+        </Link>
 
-                  <strong>
-                    8595076589
-                  </strong>
+        {/* PDF DOWNLOAD BUTTON */}
+        <a
+          href="/assets/kkp.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="download-pdf-btn"
+        >
+          📄 Download Brochure
+        </a>
 
-                </div>
-              </a>
-
-              <Link
-                to="/classified"
-                className="explore-now-link"
-              >
-                Explore Now →
-              </Link>
-
-            </div>
-          </motion.div>
-        </div>
       </div>
-
-
+    </motion.div>
+  </div>
+</div>
 
       {/* SEARCH CARD */}
       <div className="search-card-container">
