@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const SellProperty = () => {
 
@@ -21,34 +22,50 @@ const SellProperty = () => {
         </p>
 
         <div className="row">
-          
+
           {/* 🔹 CARD 1 */}
-          <div className="col-md-4 mb-4">
-            <div
-              className="p-4 shadow-sm rounded bg-light h-100"
-              style={{ cursor: "pointer" }}
-              onClick={handleOpenForm}   // 👈 yahi main change hai
-            >
-              <i className="fas fa-user-plus text-primary fs-1 mb-3"></i>
-              <h5 className="fw-bold">Create Account</h5>
-              <p className="text-muted small">
-                Click to fill the form and get started.
-              </p>
-            </div>
-          </div>
+       <div className="col-md-4 mb-4">
+      <Link to="/signup" style={{ textDecoration: "none" }}>
+
+    <div
+      className="p-4 shadow-sm rounded bg-light h-100"
+      style={{ cursor: "pointer" }}
+      onClick={handleOpenForm}
+    >
+
+      <i className="fas fa-user-plus text-primary fs-1 mb-3"></i>
+
+      <h5 className="fw-bold text-dark">
+        Create Account
+      </h5>
+
+      <p className="text-muted small">
+        Click to fill the form and get started.
+      </p>
+
+    </div>
+
+  </Link>
+
+</div>
 
           {/* 🔹 CARD 2 */}
-          <div className="col-md-4 mb-4">
-            <div className="p-4 shadow-sm rounded bg-light h-100">
-              <i className="fas fa-home text-success fs-1 mb-3"></i>
-              <h5 className="fw-bold">List Property</h5>
-              <p className="text-muted small">
-                Add your property details, photos and price in a few steps.
-              </p>
-            </div>
-          </div>
+         <div className="col-md-4 mb-4">  
+      <Link to="/sell-property" style={{ textDecoration: "none" }}>
+     <div className="p-4 shadow-sm rounded bg-light h-100">
+     <i className="fas fa-home text-success fs-1 mb-3"></i>
+       <h5 className="fw-bold text-dark">
+        List Property
+      </h5>
 
-          {/* 🔹 CARD 3 */}
+      <p className="text-muted small">
+        Add your property details, photos and price in a few steps.
+      </p>
+    </div>
+  </Link>
+</div>
+
+     {/* 🔹 CARD 3 */}
           <div className="col-md-4 mb-4">
             <div className="p-4 shadow-sm rounded bg-light h-100">
               <i className="fas fa-handshake text-warning fs-1 mb-3"></i>

@@ -19,27 +19,42 @@ const FeaturedProperties = () => {
   // STATES
   const [ads, setAds] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [currentSlide, setCurrentSlide] = useState({});
+  const [loadedImages, setLoadedImages] = useState({});
 
   // FETCH DATA
   useEffect(() => {
+
+    // BACKEND WAKE-UP
+    axios.get(
+      "https://kismatkiproperty-backend.onrender.com/"
+    );
+
     fetchAds();
+
   }, []);
 
   const fetchAds = async () => {
+
     try {
 
       setLoading(true);
 
       const res = await axios.get(
-        "https://kismatkiproperty-backend.onrender.com/api/properties"
+        "https://kismatkiproperty-backend.onrender.com/api/properties",
+        {
+          timeout: 10000,
+        }
       );
 
-      setAds(res.data);
+      setAds(res.data || []);
 
     } catch (err) {
 
-      console.log(err);
+      console.log("API Error:", err);
+
+      setError("Properties load nahi ho paayi");
 
     } finally {
 
@@ -54,10 +69,12 @@ const FeaturedProperties = () => {
     const container = scrollRef.current;
 
     if (container) {
+
       container.scrollBy({
         left: direction === "left" ? -320 : 320,
         behavior: "smooth",
       });
+
     }
   };
 
@@ -85,7 +102,23 @@ const FeaturedProperties = () => {
     }));
   };
 
+  // ERROR UI
+  if (error) {
+
+    return (
+
+      <div className="text-center py-5">
+
+        <h5 className="text-danger">
+          {error}
+        </h5>
+
+      </div>
+    );
+  }
+
   return (
+
     <section
       className="py-5"
       style={{ background: "#f8f9fa" }}
@@ -97,6 +130,7 @@ const FeaturedProperties = () => {
         <div className="d-flex justify-content-between align-items-center mb-4">
 
           <div>
+
             <h2 className="fw-bold text-primary mb-1">
               Featured Properties
             </h2>
@@ -104,6 +138,7 @@ const FeaturedProperties = () => {
             <p className="text-muted mb-0">
               Curated especially for you
             </p>
+
           </div>
 
           <div className="d-flex gap-2">
@@ -210,7 +245,7 @@ const FeaturedProperties = () => {
               </div>
             ))
 
-          ) : (
+          ) : ads.length > 0 ? (
 
             ads.map((property) => {
 
@@ -221,6 +256,8 @@ const FeaturedProperties = () => {
               const current = currentSlide[property._id] || 0;
 
               const imageSrc = images[current];
+
+              const imageKey = `${property._id}-${current}`;
 
               return (
 
@@ -240,36 +277,69 @@ const FeaturedProperties = () => {
                 >
 
                   {/* IMAGE */}
-                  <div className="position-relative overflow-hidden">
+                  <div
+                    className="position-relative overflow-hidden"
+                    style={{
+                      height: "200px",
+                      background: "#f1f3f5",
+                    }}
+                  >
+
+                    {/* SHIMMER */}
+                    {!loadedImages[imageKey] && (
+
+                      <div
+                        className="shimmer position-absolute top-0 start-0 w-100 h-100"
+                        style={{
+                          background: "#e9ecef",
+                          zIndex: 1,
+                        }}
+                      ></div>
+
+                    )}
 
                     <img
-                      loading="lazy"
                       src={imageSrc}
                       alt={property.title}
+                      loading="lazy"
+                      onLoad={() => {
+
+                        setLoadedImages((prev) => ({
+                          ...prev,
+                          [imageKey]: true,
+                        }));
+
+                      }}
                       className="card-img-top"
                       style={{
                         height: "200px",
+                        width: "100%",
                         objectFit: "cover",
-                        transition: "0.4s",
+                        transition: "0.5s ease",
+                        opacity: loadedImages[imageKey] ? 1 : 0,
                       }}
                     />
 
                     {/* TAG */}
                     {property.tag && (
-                      <span className="badge bg-primary position-absolute top-0 start-0 m-2">
+
+                      <span className="badge bg-primary position-absolute top-0 start-0 m-2 z-2">
                         {property.tag}
                       </span>
+
                     )}
 
                     {/* HEART */}
-                    <button className="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle text-danger">
+                    <button className="btn btn-light btn-sm position-absolute top-0 end-0 m-2 rounded-circle text-danger z-2">
+
                       <FaHeart />
+
                     </button>
 
                     {/* SLIDER BUTTONS */}
                     {images.length > 1 && (
 
-                      <div className="position-absolute top-50 start-0 end-0 d-flex justify-content-between px-2 translate-middle-y">
+                      <div className="position-absolute top-50 start-0 end-0 d-flex justify-content-between px-2 translate-middle-y z-2">
 
                         <button
                           className="btn btn-dark btn-sm rounded-circle opacity-75"
@@ -302,8 +372,11 @@ const FeaturedProperties = () => {
                     </h6>
 
                     <p className="text-muted small mb-2">
+
                       <FaMapMarkerAlt className="me-1 text-primary" />
+
                       {property.location}
+
                     </p>
 
                     <div className="d-flex justify-content-between text-muted small mb-3 bg-light p-2 rounded">
@@ -338,7 +411,17 @@ const FeaturedProperties = () => {
                 </motion.div>
               );
             })
+
+          ) : (
+
+            <div className="w-100 text-center py-5">
+
+              <h5>No Properties Found</h5>
+
+            </div>
+
           )}
+
         </div>
       </div>
 
