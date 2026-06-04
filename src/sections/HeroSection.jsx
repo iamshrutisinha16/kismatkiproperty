@@ -79,7 +79,7 @@ function HeroSection() {
 
   // SEARCH BUTTON
   const handleSearch = () => {
-
+  
     navigate(
       `/properties?category=${activeTab}&city=${searchText}`
     );
@@ -94,7 +94,7 @@ function HeroSection() {
 <div className="hero-banner">
 
   <img
-    src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop"
+    src="/assets/herobanner.png"
     alt="Banner"
     className="banner-img"
   />
@@ -347,8 +347,6 @@ function HeroSection() {
           </div>
         </motion.div>
       </div>
-
-
 
       {/* CSS */}
       <style jsx>{`

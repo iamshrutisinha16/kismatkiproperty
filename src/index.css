@@ -6,7 +6,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Fix for Side Space */
 html, body {
     margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -344,13 +343,11 @@ code {
 
   }
 
-
-
   .main-heading {
-
     font-size: 1.3rem;
 
   }
+
   /* Grid Layout (99acres style) */
   .mobile-action-grid {
     display: block;
@@ -937,8 +934,6 @@ code {
 }
 
 /*advertise*/
-/* AdvertiseWithUs.css */
-
 .advertise-section {
   padding: 90px 0;
   background: linear-gradient(
@@ -1083,10 +1078,6 @@ code {
     transform: translateY(0);
   }
 }
-
-/* ========================= */
-/* RESPONSIVE */
-/* ========================= */
 
 @media (max-width: 992px) {
 
