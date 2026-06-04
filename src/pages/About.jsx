@@ -69,7 +69,7 @@ const About = () => {
           className="about-image"
         >
           <img
-            src="https://www.godigit.com/content/dam/godigit/life/homepage/person-owning-multiple-property.jpg"
+            src="https://img.staticmb.com/mbcontent/images/crop/uploads/2024/11/mortgaged-and-unregistered-property-ownership-transfer_0_1200.jpg.webp"
             alt="Kismat Ki Property"
           />
         </motion.div>
