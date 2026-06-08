@@ -98,9 +98,25 @@ code {
   width: 100%;
   height: 100%;
   object-fit: cover;
+
+  animation: zoomInOut 12s ease-in-out infinite;
 }
 
-/* Overlay FIX (no margin bug) */
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Overlay */
 .banner-overlay {
   position: absolute;
   inset: 0;
@@ -128,6 +144,21 @@ code {
   line-height: 1.4;
   margin-bottom: 20px;
   font-weight: 600;
+
+  opacity: 0;
+  animation: smoothFadeIn 1.5s ease-out forwards;
+}
+
+@keyframes smoothFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* BUTTONS */
@@ -136,6 +167,21 @@ code {
   align-items: center;
   gap: 15px;
   flex-wrap: wrap;
+
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUpBtn 1s ease-out 0.6s forwards;
+}
+
+@keyframes fadeUpBtn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .call-card-btn {
@@ -147,6 +193,13 @@ code {
   text-decoration: none;
   color: var(--text-dark);
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+  transition: all 0.35s ease;
+}
+
+.call-card-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
 }
 
 .phone-icon-circle {
@@ -159,6 +212,22 @@ code {
   justify-content: center;
   margin-right: 10px;
   color: white;
+
+  animation: phonePulse 2s infinite;
+}
+
+@keyframes phonePulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 .call-text span {
