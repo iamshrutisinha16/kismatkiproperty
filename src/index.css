@@ -398,8 +398,6 @@ code {
 
   }
 
-
-
   .hero-content {
 
     margin-top: 9%;
@@ -533,17 +531,18 @@ code {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
+    gap: 10px;
   }
 
   .call-card-btn,
   .download-pdf-btn{
     width: 100%;
-    max-width: 260px;
+    max-width: 200px;
   }
 
   .download-pdf-btn{
     justify-content: center;
+    margin-bottom: 17px;
   }
 
 }
