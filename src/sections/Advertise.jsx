@@ -34,25 +34,6 @@ const AdvertiseWithUs = () => {
             controls={true}
           >
 
-            {/* VIDEO SLIDE */}
-            <Carousel.Item>
-              <div className="media-wrapper">
-                <video
-                  className="advertise-media"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                >
-                  <source
-                    src="/assets/advertisementvideo.mp4"
-                    type="video/mp4"
-                  />
-                </video>
-
-              </div>
-            </Carousel.Item>
-
             {/* IMAGE 1 */}
             <Carousel.Item>
               <div className="media-wrapper">
